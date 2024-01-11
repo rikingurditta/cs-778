@@ -24,13 +24,14 @@ $$
 
 First step of numerically solving PDEs is to discretize domain
 
-If we discretize into a 1d mesh with resolution $M$, then $h = 1/M$ and $x_j = jh$, and we represent our mesh by $\{x_j : 0 \leq j \leq M\}\}$
+If we discretize into a 1d mesh with resolution $M$, then $h = 1/M$ and $x_j = jh$, and we represent our mesh by $\{x_j : 0 \leq j \leq M\}$
 
 ### Approximations to $u'(x_j)$
 
 #### Forward difference
 
 Using Taylor expansion
+
 $$
 \begin{align*}
 u(x_{j+1}) &= u(x_j + h) \\
@@ -104,6 +105,7 @@ u(0) &= u_0 \\
 u(1) &= u_1
 \end{align*}
 $$
+
 Discretizing into $M$ steps, we have
 
 - $U_0 = u_0$
@@ -118,6 +120,7 @@ We can eliminate $U_0$ and $U_M$ from our linear system by realizing
 (this is not necessary, but in practice it helps)
 
 This is a fully determined linear system in $U_1, ..., U_{M-1}$:
+
 $$
 \underbrace{\begin{bmatrix}
 2 & -1 & 0 & 0 & \cdots & 0 & 0 & 0 \\
@@ -140,6 +143,7 @@ f_{M-2} \\
 f_{M-1} + u_1/h^2
 \end{bmatrix}}_\b
 $$
+
 $A$ is symmetric and sparse, so we can easily solve $A \x = \b$ to calculate all of our $U_j$ values and therefore solve for $u(x_0), ..., u(x_M)$. We can interpolate these to calculate other values of $u(x)$ on our domain
 
 ### Proving usefulness
@@ -185,6 +189,7 @@ $$
 Let $\displaystyle w(x) = x - x^2 = \frac{1}{4} - \parens{x - \frac{1}{2}}^2$ and let $W_j = w(x_j)$
 
 Then
+
 $$
 \begin{align*}
 -\partial \overline \partial W_j &= -\frac{1}{h^2} (W_{j+1} - 2W_j + W_{j-1}) \\
@@ -194,6 +199,7 @@ $$
 $$
 
 Now set $U_j^\pm = \pm U_j - \frac{1}{2} \abs{\partial \overline \partial \U}_\Omega W_j$. Then
+
 $$
 \begin{align*}
 -\partial \overline \partial U_j^\pm
@@ -202,7 +208,9 @@ $$
 &\leq 0
 \end{align*}
 $$
+
 Since $-\partial \overline \partial U_j^\pm \leq 0$ we can apply the previous lemma to find
+
 $$
 \begin{align*}
 U_j^\pm &\leq \max \{U_0^\pm , U_M^\pm\} \\
