@@ -2,7 +2,7 @@
 
 $$
 \newcommand{\x}{\mathbf x}
-\newcommand{\b}{\mathbf b}
+\newcommand{\f}{\mathbf f}
 \newcommand{\j}{\mathbf j}
 \newcommand{\n}{\mathbf n}
 \newcommand{\v}{\mathbf v}
@@ -141,10 +141,10 @@ f_3 \\
 \vdots \\
 f_{M-2} \\
 f_{M-1} + u_1/h^2
-\end{bmatrix}}_\b
+\end{bmatrix}}_\f
 $$
 
-$A$ is symmetric and sparse, so we can easily solve $A \x = \b$ to calculate all of our $U_j$ values and therefore solve for $u(x_0), ..., u(x_M)$. We can interpolate these to calculate other values of $u(x)$ on our domain
+$A$ is symmetric and sparse, so we can easily solve $A \U = \f$ to calculate all of our $U_j$ values and therefore solve for $u(x_0), ..., u(x_M)$. We can interpolate these to calculate other values of $u(x)$ on our domain
 
 ### Proving usefulness
 
