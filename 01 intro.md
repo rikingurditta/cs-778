@@ -104,9 +104,9 @@ $$
 We need initial conditions on $\Omega$ and and boundary conditions on its boundary $T$:
 
 - Initial conditions: $u(\x, 0) = u_0(\x)$ on $\Omega$
-- Dirichlet boundary conditions: $u(\x, t) = $
-- Neumann boundary conditions: [...]
-- Robin boundary conditions: $a\partials{u}{\n} + h(u - g) = 0$ on$T$
+- Dirichlet boundary conditions: $u(\x, t) = g(\x)$ on $T$
+- Neumann boundary conditions: $\partials{u}{\n} = g(\x)$ on $T$
+- Robin boundary conditions: $a\partials{u}{\n} + h(u - g) = 0$ on $T$
 
 #### Simplifications
 
