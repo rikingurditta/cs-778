@@ -116,10 +116,13 @@ $$
 \partial_t u - \nabla \cdot (a \nabla u) = f
 $$
 
-If the problem doesn't depend on time and [...] (elliptical)
+If the problem doesn't depend on time and doesn't have advection and reaction terms (elliptical)
 
 $$
-[\text{Poisson and Laplace equations}]
+\begin{align*}
+\Delta u &= f \tag{Poisson equation} \\
+\Delta u &= 0 \tag{Laplace equation}
+\end{align*}
 $$
 
 If diffusion and reaction are negligible, then we get ... (hyperbolic)

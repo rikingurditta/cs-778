@@ -5,4 +5,9 @@ Winter 2024 session, taught by [Sander Rhebergen](https://uwaterloo.ca/scholar/s
 ### Table of Contents
 
 1. [Introduction](01 intro)
-1. [Finite difference methods for elliptic PDEs](02 finite diff for elliptic)
+1. [Finite difference methods for elliptic PDEs](02 FD for elliptic)
+1. [ODEs](03 ODEs)
+1. [Finite difference methods for parabolic PDEs](04 FD for parabolic)
+1. [I was late to this lecture and wasn't really sure what was happening](05)
+1. [Summary of finite difference methods](06 summary of fd)
+1. [title here](07)

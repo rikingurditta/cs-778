@@ -160,7 +160,7 @@ If $-\disclapl U_j \leq 0$ then $\displaystyle \max_j U_j = \max\{U_0, U_M\}$ (i
 
 *Proof.*
 
-Since $\overline \U$ satisfies $-\disclapl U_j \leq 0$, we can expand this to find that $\frac{2}{h^2} U_j \leq \frac{1}{h^2} (U_{j-1} + U_{j+1})$, i.e. $U_j \leq \frac{1}{2}U_{j-1} + \frac{1}{2}U_{j+1}$
+Since $\overline \U$ satisfies $-\disclapl U_j \leq 0$, we can expand this to find that $U_j \leq \frac{1}{2} U_{j-1} + \frac{1}{2} U_{j+1}$
 
 Suppose $\overline \U$ has a maximum at an interior point $U_j$ with $j \in \{1, ..., M-1\}$
 
@@ -175,7 +175,7 @@ But this contradicts our assumption that $U_j$ is a maximum point. We arrive at 
 
 ##### Stability
 
-We denote the max norm as $\displaystyle \abs{\U}_S = \max_{x_j \in S} \abs{U_j}$ 
+We denote the max norm as $\displaystyle \abs{U}_S = \max_{x_j \in S} \abs{U_j}$ 
 
 Suppose $\overline \U$ solves $-\disclapl U_j = f_j$ with $U_0 = u_0$ and $U_M = u_1$. Then
 
@@ -297,7 +297,7 @@ $$
 
 *Proof.*
 
-Define the error $z_j = U_j - u(x_j)$
+Define the error $z_j = U_j.- u(x_j)$
 
 On interior points,
 
