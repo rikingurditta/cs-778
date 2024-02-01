@@ -10,4 +10,4 @@ Winter 2024 session, taught by [Sander Rhebergen](https://uwaterloo.ca/scholar/s
 1. [Finite difference methods for parabolic PDEs](04 FD for parabolic)
 1. [I was late to this lecture and wasn't really sure what was happening](05)
 1. [Summary of finite difference methods](06 summary of fd)
-1. [title here](07)
+1. [Reformulating boundary value problems](07)

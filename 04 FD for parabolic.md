@@ -9,7 +9,7 @@ $$
 \newcommand{\v}{\mathbf v}
 \newcommand{\U}{\mathbf U}
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
-\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\norm}[1]{\big\lVert #1 \big\rVert}
 \newcommand{\parens}[1]{\left( #1 \right)}
 \newcommand{\brackets}[1]{\left[ #1 \right]}
 \newcommand{\angles}[1]{\left\langle #1 \right\rangle}
