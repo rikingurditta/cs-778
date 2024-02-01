@@ -25,10 +25,13 @@ $$
 ## Boundary value problems
 
 Let $C^2_D(\overline \Omega)$ be the space of $C^2$ functions on $\overline \Omega$ that are $0$ at $0$:
+
 $$
 C^2_D(\overline \Omega) = \{u \in C^2(\overline \Omega : u(0) = 0\}
 $$
+
 Consider the boundary value problem
+
 $$
 \begin{cases}
 -u'' = f & \text{in } \overline \Omega = (0, 1) \\
@@ -36,19 +39,24 @@ u(0) = 0 \\
 u'(1) = 0
 \end{cases}
 $$
+
 If we assume $f \in C^0(\overline \Omega)$, then $u \in C^2_D(\overline \Omega)$.
 
 Consider some function $v \in C^2_D(\Domain)$, then we can equivalently solve $-u''v = fv$. Integrating both sides,
+
 $$
 \begin{align*}
 -\int_0^1 u''(x) v(x) \d x &= \int_0^1 f(x) \d x \\
 -\int_0^1 u'(x) v'(x) \d x - (u'(1) v(1) - u'(0) v(0)) &= \int_0^1 f(x) \d x
 \end{align*}
 $$
+
 And thus our boundary value problem is equivalently to find $u \in C^2_D(\Domain)$ such that
+
 $$
 \int_0^1 u'(x)v'(x) \d x = \int_0^1 f(x) \d x
 $$
+
 for all $v \in C^2_D(\Domain)$
 
 ### Problems
@@ -60,21 +68,29 @@ Thus requiring $u \in C^2(\Domain)$ is too restrictive
 ## $L^2$ functions
 
 We define the **space of $L^2$ functions on $\Omega$**:
+
 $$
 L^2(\Omega) = \{ u : \Omega \to \R : \int_\Omega u(x)^2 \d x < \infty \ \}
 $$
+
 And define a subset $V$ as
+
 $$
 V = \{ u \in L^2(\Omega) : \int_\Omega u'(x)^2 < \infty, u(0) = 0 \}
 $$
+
 i.e.
+
 $$
 V = \{ u \in L^2(\Omega) : u' \in L^2(\Omega), u(0) = 0\}
 $$
+
 We define the **weak formulation of our PDE** as
+
 $$
 \text{find } u \in V \text{ so that } \int_0^1 u'v' \d x = \int_0^1 f v \d x \text{ for all } v \in V
 $$
+
 This is much less restrictive than looking for $u \in C^2_D(\Domain)$, so it allows us to solve a much larger class of problems (e.g. $f$ is discontinuous)
 
 ## Terminology
@@ -97,21 +113,26 @@ This is much less restrictive than looking for $u \in C^2_D(\Domain)$, so it all
 (Theorem 0-14)
 
 Suppose $f \in C^0(\Domain)$, $u \in C^2(\Domain)$, and they satisfy
+
 $$
 u \in V,\ \ \int_0^1 u'v' \d x = \int_0^1 fv \d x
 $$
+
 Then $u$ solves
+
 $$
 \begin{cases}
 -u'' = f & \text{on } \Omega = (0, 1) \\
 u(0) = 0, u'(1) = 1
 \end{cases}
 $$
+
 *Proof.*
 
 If our condition holds for all $v \in V$, it also holds for $v \in C^1(\Domain)$ since $C^1(\Domain) \subseteq V$.
 
 Then since all of our functions are differentiable enough, we can use integration by parts:
+
 $$
 \begin{align*}
 \int_0^1 fv \d x &= \int_0^1 u' v' \d x \\
@@ -120,28 +141,34 @@ $$
 \Longrightarrow \int_0^1 (f + u'') v \d x &= 0
 \end{align*}
 $$
+
 Let $f + u'' = w \ ( \in C^0(\Domain) )$. Suppose $w \neq 0$.
 
 Then there must be some interval $(x_0, x_1) \subseteq [0, 1]$ so that $w$ is either only positive or only negative on this interval.
 
 Since we assumed that $u$ satisfies our weak formulation, it must hold for all $v \in V$, including
+
 $$
 v(x) = \begin{cases}
 (x - x_0)^2 (x - x_1)^2 & x \in [x_0, x_1] \\
 0 & \text{otherwise}
 \end{cases}
 $$
+
 Note that $v(x) > 0$ for $x \in (x_0, x_1)$. Then,
+
 $$
 \begin{align*}
 \int_0^1 w(x) v(x) \d x &= \int_{x_0}^{x_1} w(x) v(x) \d x \tag{$v$ is 0 otherwise}
 \end{align*}
 $$
+
 Since $v$ is positive on the interval being integrated over, $wv$ is either positive or negative on this interval depending on $w$, so the integral is not 0. We have reached a contradiction, so we can conclude that $w = 0$, and thus $f = -u''$.
 
 Since $u \in V$, it satisfies $u(0) = 0$.
 
 Going back to our integration by parts, we have found $u$ such that
+
 $$
 \begin{align*}
 \int_0^1 f v \d x &= \int_0^1 u' v' \d x + u'(1) v(1) \\
@@ -149,9 +176,11 @@ $$
 0 &= u'(1) v(1)
 \end{align*}
 $$
+
 This must hold for all $v \in V$, including $v(x) = x$. So in this case, $v(1) = 1$ and $u'(1)v(1) = 0$, so $u'(1) = 0$​.
 
 And so for all $v \in V$, we have
+
 $$
 \int_0^1 fv \d x = \int_0^1 u' v' \d x
 $$

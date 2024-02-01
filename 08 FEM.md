@@ -32,7 +32,9 @@ $$
 a(u, v) = \int_\Omega u' v' \d x \\
 F(v) = \int_\Omega f v \d x
 $$
+
 The weak formulation of a BPV is
+
 $$
 \text{find } u \in V \text{ so that } a(u, v) = F(v) \text{ for all } v \in V
 $$
@@ -42,13 +44,16 @@ Remember that $a, F, V$ all depend on the PDE that we are solving.
 ### Example
 
 Consider the boundary value problem
+
 $$
 \begin{cases}
 -u'' + u = f &\text{in } \Omega = (0, 1) \\
 u'(0) = u'(1) = 0
 \end{cases}
 $$
+
 Its weak formulation would be to find $u \in V$ so that $a(u, v) = F(v)$ for all $v \in V$, where
+
 $$
 V = \{v \in L^2(\Omega) : v' \in L^2(\Omega)\} \\
 a(u, v) = \int_\Omega (u'v' + uv) \d x \\
@@ -78,30 +83,37 @@ Since $S$ is a subspace of $V$, $u_S$ is an approximation to $u \in V$.
 ### Orthogonality
 
 We define $u_S \in S$ as the function that solves
+
 $$
 a(u_S, v) = F(v) \text{ for all } v \in S
 $$
+
 Our original weakly formulated problem is to find $u \in V$ so that
+
 $$
 a(u, v) = F(v) \text{ for all } v \in V
 $$
 Since $S \subseteq V$, we know that $u$ solves the problem for all $v \in S$.
 
 Subtracting our two equations, we find that for all $v \in S$ we have
+
 $$
 \begin{align*}
 a(u, v) - a(u_S, v) &= F(v) - F(v) \\
 a(u - u_S, v) &= 0
 \end{align*}
 $$
+
 We know from functional analysis that $a$ defines an inner product, so the equation above states that $u - u_S$ is orthogonal to all $v \in S$ using the inner product $a(\cdot, \cdot)$
 
 ### Energy norm
 
 The inner product $a(\cdot, \cdot)$ induces the **energy norm** on $V$:
+
 $$
 \norm{v}_E = \sqrt{a(v, v)}
 $$
+
 This norm satisfies all the expected inequalities, such as
 
 - Cauchy-Schwartz inequality: $\abs{a(v, w)} \leq \norm{v}_E \norm{w}_E$​
@@ -109,6 +121,7 @@ This norm satisfies all the expected inequalities, such as
 ### Error bound
 
 So for any $v \in S$, we have
+
 $$
 \begin{align*}
 \norm{u - u_S}^2_E &= a(u - u_S, u - u_S) \\
@@ -116,7 +129,9 @@ $$
 &= a(u - u_S, u - v) + a(u - u_S, v - u_S)
 \end{align*}
 $$
+
 Since $u - u_S$ is orthogonal to all functions in $S$, and $v - u_S \in S$, the last term is 0:
+
 $$
 \begin{align*}
 \norm{u - u_S}^2_E &= a(u - u_S, u - v) + 0 \\
@@ -124,19 +139,26 @@ $$
 \norm{u - u_S}_E &\leq \norm{u - v}_E
 \end{align*}
 $$
+
 Since this holds for all $v \in S$, this shows that
+
 $$
 \norm{u - u_S}_E \leq \inf_{v \in S} \norm{u - v}_E
 $$
+
 However, $u_S$ itself is in $S$, so
+
 $$
 \norm{u - u_S}_E \leq \inf_{v \in S} \norm{u - v}_E \leq \norm{u - u_S} \\
 \text{so } \norm{u - u_S}_E = \inf_{v \in S} \norm{u - v}_E
 $$
+
 Since we are attaining the infimum, we are free to rewrite this as a minimum:
+
 $$
 \norm{u - u_S}_E = \min_{v \in S} \norm{u - v}_E
 $$
+
 This means that $u_S$ is the function in $S$ that minimizes the energy norm $\norm \cdot _E$.
 
 ### $L^2$ norm
@@ -146,10 +168,13 @@ In practice, we want to quantify our error in the $L^2$ norm, not the $E$ norm:
 With $L^2(\Omega) = \{v : \Omega \to \R : \int_\Omega v^2 < \infty\}$
 
 We can define an inner product on this space:
+
 $$
 \angles{u, v} = \int_\Omega uv \d x
 $$
+
 And this inner product induces a norm
+
 $$
 \norm{v} = \sqrt{\angles{v, v}} = \sqrt{\int_\Omega v^2 \d x}
 $$
@@ -161,20 +186,25 @@ We will use a duality argument:
 #### Example:
 
 Consider the BVP:
+
 $$
 \begin{cases}
 -u'' = f &\text{in } \Omega = (0, 1) \\
 u'(0) = u'(1) = 0
 \end{cases}
 $$
+
 Let's replace $f$ with $u - u_S$ and define $w$ to be the solution of the new problem:
+
 $$
 \begin{cases}
 -w'' = u - u_S &\text{in } \Omega = (0, 1) \\
 w(0) = w'(1) = 0
 \end{cases}
 $$
+
 Then,
+
 $$
 \begin{align*}
 \norm{u - u_S}^2 &= \angles{u - u_S, u - u_S} \\
@@ -183,7 +213,9 @@ $$
 &= \int_0^1 w' (u - u_S)' - w'(u - u_S) \Bigg\vert_0^1 \tag{integration by parts}
 \end{align*}
 $$
+
 Since $w'(1) = 0$, and $u(0) = u'(0) = 0$, the constant term in this summation is $0$. So continuing,
+
 $$
 \begin{align*}
 \norm{u - u_S}^2 &= \int_0^1 w' (u - u_S)' 0 \\
@@ -195,10 +227,13 @@ $$
 &= \norm{u - u_S}_E \frac{\norm{w - v}_E}{\norm{w''}} \tag{$u - u_S = -w''$}
 \end{align*}
 $$
+
 Since this is true for all $v \in S$, it is true for the infimum:
+
 $$
 \norm{u - u_S} \leq \norm{u - u_S}_E \parens{ \inf_{v \in S} \frac{\norm{w - v}_E}{\norm{w''}} }
 $$
+
 $\inf_v \norm{w - v}_E$ clearly depends on $S$, and we will see later that $w$ also depends only on $S$. Thus $\norm{u - u_S}$ can be bounded by $\norm{u - u_S}_E$ times a factor that depends on $S$.)
 
 ## Dealing with $S$
@@ -218,6 +253,7 @@ It can be shown that $S$ is a subspace of $V$​.
 ### Hat functions
 
 Define $\phi_i$ as a hat function:
+
 $$
 \phi_i(x) =
 \begin{cases}
@@ -226,6 +262,7 @@ $$
 0 & \text{otherwise}
 \end{cases}
 $$
+
 ![hat functions](hat functions.png)
 
 This has a narrow support (it is nonzero on a very small patch), so in practice it gives us a lot of sparsity.
