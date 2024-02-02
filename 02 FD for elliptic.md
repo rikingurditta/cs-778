@@ -11,6 +11,7 @@ $$
 \newcommand{\parens}[1]{\left( #1 \right)}
 \newcommand{\brackets}[1]{\left[ #1 \right]}
 \newcommand{\angles}[1]{\left\langle #1 \right\rangle}
+\newcommand{\curlies}[1]{\left\lbrace #1 \right\rbrace}
 \newcommand{\inv}[1]{#1^{-1}}
 \newcommand{\d}{\, \text{d}}
 \newcommand{\dbyd}[2]{\frac{\d #1}{\d #2}}
@@ -25,7 +26,7 @@ $$
 
 First step of numerically solving PDEs is to discretize domain
 
-If we discretize into a 1d mesh with resolution $M$, then $h = 1/M$ and $x_j = jh$, and we represent our mesh by $\{x_j : 0 \leq j \leq M\}$
+If we discretize into a 1d mesh with resolution $M$, then $h = 1/M$ and $x_j = jh$, and we represent our mesh by $\curlies{ x_j : 0 \leq j \leq M }$
 
 ### Approximations to $u'(x_j)$
 
@@ -156,13 +157,13 @@ Note that $\U$ is only interior points, we will use $\overline \U = (u0, U_1, ..
 
 *First, a lemma:*
 
-If $-\disclapl U_j \leq 0$ then $\displaystyle \max_j U_j = \max\{U_0, U_M\}$ (i.e. if $\overline \U$ is convex then its max is at one of its endpoints)
+If $-\disclapl U_j \leq 0$ then $\displaystyle \max_j U_j = \max \curlies{ U_0, U_M }$ (i.e. if $\overline \U$ is convex then its max is at one of its endpoints)
 
 *Proof.*
 
 Since $\overline \U$ satisfies $-\disclapl U_j \leq 0$, we can expand this to find that $U_j \leq \frac{1}{2} U_{j-1} + \frac{1}{2} U_{j+1}$
 
-Suppose $\overline \U$ has a maximum at an interior point $U_j$ with $j \in \{1, ..., M-1\}$
+Suppose $\overline \U$ has a maximum at an interior point $U_j$ with $j \in \curlies{ 1, ..., M-1 }$
 
 If $U_{j+1} < U_j$, then
 
@@ -181,8 +182,8 @@ Suppose $\overline \U$ solves $-\disclapl U_j = f_j$ with $U_0 = u_0$ and $U_M =
 
 $$
 \begin{align*}
-\abs{U}_{\overline \Omega} \leq \max \{\abs{U_0}, \abs{U_M}\} + c\abs{\disclapl \overline \U}_\Omega \\
-\abs{U}_{\overline \Omega} \leq \max \{\abs{U_0}, \abs{U_M}\} + c\abs{\mathbf f}_\Omega
+\abs{U}_{\overline \Omega} \leq \max \curlies{ \abs{U_0}, \abs{U_M} } + c\abs{\disclapl \overline \U}_\Omega \\
+\abs{U}_{\overline \Omega} \leq \max \curlies{ \abs{U_0}, \abs{U_M} } + c\abs{\mathbf f}_\Omega
 \end{align*}
 $$
 
@@ -217,9 +218,9 @@ Since $-\disclapl U_j^\pm \leq 0$ we can apply the previous lemma to find
 
 $$
 \begin{align*}
-U_j^\pm &\leq \max \{U_0^\pm , U_M^\pm\} \\
-&= \max\{\pm U_0, \pm U_M\} \tag{$W_0, W_M = 0$} \\
-\abs{\U}_{\overline \Omega} &\leq \max\{\abs{U_0}, \abs{U_M}\} + \frac{1}{2} [...]
+U_j^\pm &\leq \max \curlies{ U_0^\pm , U_M^\pm} \\
+&= \max\curlies{ \pm U_0, \pm U_M} \tag{$W_0, W_M = 0$} \\
+\abs{\U}_{\overline \Omega} &\leq \max\curlies{ \abs{U_0}, \abs{U_M}} + \frac{1}{2} [...]
 \end{align*}
 $$
 
@@ -238,7 +239,7 @@ In this case, $\tau_j = \disclapl u(x_j) + f_j$
 If $u$ is small enough, then
 
 $$
-\abs{\tau_j} \leq \frac{1}{12} h^2 \max_{x \in \overline \Omega} \abs{u^{(4)}(x)} \text{ for } j \in \{1, ..., M-1\}
+\abs{\tau_j} \leq \frac{1}{12} h^2 \max_{x \in \overline \Omega} \abs{u^{(4)}(x)} \text{ for } j \in \curlies{ 1, ..., M-1}
 $$
 
 *Proof.*
@@ -316,8 +317,8 @@ Using our stability estimate (lemma 4.2 [...])
 $$
 \begin{align*}
 \max_{1 \leq j \leq M-1} \abs{z_j}
-&\leq \max \{\abs{z_0}, \abs{z_m}\} + \frac{1}{8} \max_{1 \leq j \leq M-1} \abs{\disclapl z_j} \\
-&= \max\{0, 0\} + \frac{1}{8} \max_{1 \leq j \leq M-1} \abs{\tau_j} \\
+&\leq \max \curlies{ \abs{z_0}, \abs{z_m}} + \frac{1}{8} \max_{1 \leq j \leq M-1} \abs{\disclapl z_j} \\
+&= \max\curlies{ 0, 0} + \frac{1}{8} \max_{1 \leq j \leq M-1} \abs{\tau_j} \\
 &\leq \frac{1}{96} h^2 \max_{x \in [0, 1]}\abs{u^{(4)}(x)} \tag{stability}
 \end{align*}
 $$

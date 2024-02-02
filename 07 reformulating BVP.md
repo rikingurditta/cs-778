@@ -13,6 +13,7 @@ $$
 \newcommand{\parens}[1]{\left( #1 \right)}
 \newcommand{\brackets}[1]{\left[ #1 \right]}
 \newcommand{\angles}[1]{\left\langle #1 \right\rangle}
+\newcommand{\curlies}[1]{\left\lbrace #1 \right\rbrace}
 \newcommand{\inv}[1]{#1^{-1}}
 \newcommand{\d}{\, \text{d}}
 \newcommand{\dbyd}[2]{\frac{\d #1}{\d #2}}
@@ -27,7 +28,7 @@ $$
 Let $C^2_D(\overline \Omega)$ be the space of $C^2$ functions on $\overline \Omega$ that are $0$ at $0$:
 
 $$
-C^2_D(\overline \Omega) = \{u \in C^2(\overline \Omega : u(0) = 0\}
+C^2_D(\overline \Omega) = \curlies{ u \in C^2(\overline \Omega : u(0) = 0}
 $$
 
 Consider the boundary value problem
@@ -70,19 +71,19 @@ Thus requiring $u \in C^2(\Domain)$ is too restrictive
 We define the **space of $L^2$ functions on $\Omega$**:
 
 $$
-L^2(\Omega) = \{ u : \Omega \to \R : \int_\Omega u(x)^2 \d x < \infty \ \}
+L^2(\Omega) = \curlies{  u : \Omega \to \R : \int_\Omega u(x)^2 \d x < \infty \ }
 $$
 
 And define a subset $V$ as
 
 $$
-V = \{ u \in L^2(\Omega) : \int_\Omega u'(x)^2 < \infty, u(0) = 0 \}
+V = \curlies{  u \in L^2(\Omega) : \int_\Omega u'(x)^2 < \infty, u(0) = 0 }
 $$
 
 i.e.
 
 $$
-V = \{ u \in L^2(\Omega) : u' \in L^2(\Omega), u(0) = 0\}
+V = \curlies{  u \in L^2(\Omega) : u' \in L^2(\Omega), u(0) = 0}
 $$
 
 We define the **weak formulation of our PDE** as

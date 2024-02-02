@@ -13,6 +13,7 @@ $$
 \newcommand{\parens}[1]{\left( #1 \right)}
 \newcommand{\brackets}[1]{\left[ #1 \right]}
 \newcommand{\angles}[1]{\left\langle #1 \right\rangle}
+\newcommand{\curlies}[1]{\left\lbrace #1 \right\rbrace}
 \newcommand{\inv}[1]{#1^{-1}}
 \newcommand{\d}{\, \text{d}}
 \newcommand{\dbyd}[2]{\frac{\d #1}{\d #2}}
@@ -55,7 +56,7 @@ $$
 Its weak formulation would be to find $u \in V$ so that $a(u, v) = F(v)$ for all $v \in V$, where
 
 $$
-V = \{v \in L^2(\Omega) : v' \in L^2(\Omega)\} \\
+V = \curlies{ v \in L^2(\Omega) : v' \in L^2(\Omega)} \\
 a(u, v) = \int_\Omega (u'v' + uv) \d x \\
 F(v) = \int_\Omega fv \d x
 $$
@@ -165,7 +166,7 @@ This means that $u_S$ is the function in $S$ that minimizes the energy norm $\no
 
 In practice, we want to quantify our error in the $L^2$ norm, not the $E$ norm:
 
-With $L^2(\Omega) = \{v : \Omega \to \R : \int_\Omega v^2 < \infty\}$
+With $L^2(\Omega) = \curlies{ v : \Omega \to \R : \int_\Omega v^2 < \infty}$
 
 We can define an inner product on this space:
 
@@ -270,9 +271,9 @@ This has a narrow support (it is nonzero on a very small patch), so in practice 
 ### Terminology
 
 - the grid is a **mesh**
-- $\{x_i\}$ in our mesh are **nodes**
-- the set of values of a function $v$ at the nodes, $\{v(x_i)\}$ are **nodal values** of $v$​
-- our hat functions $\{\phi_i\}$ are a **nodal basis** for $S$
+- $\curlies{ x_i}$ in our mesh are **nodes**
+- the set of values of a function $v$ at the nodes, $\curlies{ v(x_i)}$ are **nodal values** of $v$​
+- our hat functions $\curlies{ \phi_i}$ are a **nodal basis** for $S$
 
 ### Interpolant
 

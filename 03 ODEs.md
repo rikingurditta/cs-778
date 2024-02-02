@@ -12,6 +12,7 @@ $$
 \newcommand{\parens}[1]{\left( #1 \right)}
 \newcommand{\brackets}[1]{\left[ #1 \right]}
 \newcommand{\angles}[1]{\left\langle #1 \right\rangle}
+\newcommand{\curlies}[1]{\left\lbrace #1 \right\rbrace}
 \newcommand{\inv}[1]{#1^{-1}}
 \newcommand{\d}{\, \text{d}}
 \newcommand{\dbyd}[2]{\frac{\d #1}{\d #2}}
