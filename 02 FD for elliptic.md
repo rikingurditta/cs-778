@@ -298,7 +298,7 @@ $$
 
 *Proof.*
 
-Define the error $z_j = U_j.- u(x_j)$
+Define the error $z_j = U_j - u(x_j)$
 
 On interior points,
 

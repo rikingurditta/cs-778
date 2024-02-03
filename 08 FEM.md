@@ -117,7 +117,7 @@ $$
 
 This norm satisfies all the expected inequalities, such as
 
-- Cauchy-Schwartz inequality: $\abs{a(v, w)} \leq \norm{v}_E \norm{w}_E$​
+- Cauchy-Schwarz inequality: $\abs{a(v, w)} \leq \norm{v}_E \norm{w}_E$​
 
 ### Error bound
 
@@ -136,7 +136,7 @@ Since $u - u_S$ is orthogonal to all functions in $S$, and $v - u_S \in S$, the 
 $$
 \begin{align*}
 \norm{u - u_S}^2_E &= a(u - u_S, u - v) + 0 \\
-\norm{u - u_S}^2_E &\leq \norm{u - u_S}_E \norm{u - v}_E \tag{Cauchy-Schwartz} \\
+\norm{u - u_S}^2_E &\leq \norm{u - u_S}_E \norm{u - v}_E \tag{Cauchy-Schwarz} \\
 \norm{u - u_S}_E &\leq \norm{u - v}_E
 \end{align*}
 $$
@@ -224,7 +224,7 @@ $$
 &= a(u - u_S, w) - a(u - u_S, v) \text{ for any } v \in S \tag{orthogonality} \\
 &= a(u - u_S, w - v) \\
 \norm{u - u_S}^2 &\leq \norm{u - u_S}_E \norm{w - v}_E \\
-\norm{u - u_S} &\leq \norm{u - u_S}_E \frac{\norm{w - v}_E}{\norm{u - u_S}} \tag{Cauchy-Schwartz} \\
+\norm{u - u_S} &\leq \norm{u - u_S}_E \frac{\norm{w - v}_E}{\norm{u - u_S}} \tag{Cauchy-Schwarz} \\
 &= \norm{u - u_S}_E \frac{\norm{w - v}_E}{\norm{w''}} \tag{$u - u_S = -w''$}
 \end{align*}
 $$
