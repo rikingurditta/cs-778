@@ -13,3 +13,4 @@ Winter 2024 session, taught by [Sander Rhebergen](https://uwaterloo.ca/scholar/s
 1. [Reformulating boundary value problems](07 reformulating BVP)
 1. [Finite element method](08 FEM)
 1. [Implementing the finite element method](09 implementing FEM)
+1. [Functional analysis](10 functional analysis)
