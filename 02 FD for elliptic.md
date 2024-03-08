@@ -176,7 +176,11 @@ But this contradicts our assumption that $U_j$ is a maximum point. We arrive at 
 
 ##### Stability
 
-We denote the max norm as $\displaystyle \abs{U}_S = \max_{x_j \in S} \abs{U_j}$ 
+We denote the max norm as
+
+$$
+\abs{U}_S = \max_{x_j \in S} \abs{U_j}
+$$
 
 Suppose $\overline \U$ solves $-\disclapl U_j = f_j$ with $U_0 = u_0$ and $U_M = u_1$. Then
 

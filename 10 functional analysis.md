@@ -24,6 +24,7 @@ $$
 \DeclareMathOperator{\span}{span}
 \DeclareMathOperator{\ess}{ess}
 \DeclareMathOperator{\supp}{supp}
+\newcommand{\Lloc}{L^1_\text{loc}}
 $$
 
 ## Lebesgue norms
@@ -227,7 +228,7 @@ If $\phi \in C^\infty_O(\Omega)$, i.e. it vanishes at $\partial \Omega$, then th
 
 ## Weak derivative
 
-Let $f \in L^1_\text{loc}(\Omega)$. $f$ has a **weak derivative** if there exists $g \in L^1_\text{loc}(\Omega)$ so that for all $\phi \in C_0^\infty(\Omega)$,
+Let $f \in \Lloc(\Omega)$. $f$ has a **weak derivative** if there exists $g \in \Lloc(\Omega)$ so that for all $\phi \in C_0^\infty(\Omega)$,
 
 $$
 \int_\Omega g(x) \phi(x) \d x = (-1)^{\abs \alpha} \int_\Omega f(x) \phi^{(\alpha)} \d x
@@ -267,7 +268,7 @@ $$
 
 ## Soblev spaces
 
-Let $k \in \N$ and $f \in L^1_\text{loc}(\Omega)$. Suppose $D_\omega^\alpha f$ exist for all $\alpha$ with $\abs \alpha \leq k$.
+Let $k \in \N$ and $f \in \Lloc(\Omega)$. Suppose $D_\omega^\alpha f$ exist for all $\alpha$ with $\abs \alpha \leq k$.
 
 The **Sobolev norm** is defined as
 
@@ -416,7 +417,13 @@ $$
 \norm{v}_{L^2(\partial \Omega)} \leq C \norm{v}_{L^2(\Omega)}^{1/2} \norm{v}_{W_2^1(\Omega)}^{1/2}
 $$
 
-Since we know $\norm{v}_{W_2^1(\Omega)} < \infty$ and $\norm{v}_{L^2(\Omega)} < \infty$, we know that their product is finite, so $\norm{v}_{L^2(\partial \Omega)} < \infty$, so $v$ is something sensible.
+Since we know
+
+$$
+\norm{v}_{W_2^1(\Omega)} < \infty \text{ and } \norm{v}_{L^2(\Omega)} < \infty
+$$
+
+we know that their product is finite, so $\norm{v}_{L^2(\partial \Omega)} < \infty$, so $v$ is something sensible.
 
 Define new notation
 

@@ -47,10 +47,13 @@ For a vector space $V$, an inner product $\angles{\cdot, \cdot} : V^2 \to \R$ is
 ### Schwartz inequality
 
 For any inner product space,
+
 $$
 \abs{\angles{u, v}} \leq \sqrt{\angles{u, u}} \sqrt{\angles{v, v}}
 $$
+
 with equality only for linear dependence, i.e.
+
 $$
 \abs{\angles{u, v}} = \sqrt{\angles{u, u}} \sqrt{\angles{v, v}} \text{ if and only if } u = \lambda v
 $$
@@ -58,9 +61,11 @@ $$
 ### Norms/Hilbert spaces
 
 Inner products induce norms:
+
 $$
 \norm{v} = \sqrt{\angles{v, v}}
 $$
+
 If the vector space is complete with respect to this norm, then the inner product space is called a **Hilbert space**.
 
 $H^k(\Omega)$ are Hilbert spaces. $L^p(\Omega)$ are not Hilbert spaces in general, only for $p = 2$.
@@ -76,10 +81,13 @@ $\overset{0}{W_2^1}$ is a subspace of $H^1(\Omega) = W_2^1(\Omega)$
 ### Reisz Representation Theorem
 
 Let $H$ be a Hilbert space. For each bounded linear functional on $H$, $L : H \to \R$, there exists a unique $u \in H$ so that
+
 $$
 L(v) = \angles{u, v}
 $$
+
 and
+
 $$
 \norm{L}_{H'} = \norm{u}_H
 $$
@@ -124,13 +132,16 @@ $$
 We can show that $V$ is a subspace of $H^1(\Omega)$ by showing that $V$ is closed in $H^1(\Omega)$
 
 Define
+
 $$
 \begin{align*}
 \delta_0: H^1(\Omega) &\to \R \\
 u &\mapsto u(0)
 \end{align*}
 $$
+
 This is bounded:
+
 $$
 \begin{align*}
 \norm{\delta_0}_{H'} &= \norm{\delta_0}_{H^{-1}(\Omega)} \\
@@ -139,14 +150,19 @@ $$
 &\leq \sup_{0 \neq v \in H^1(\Omega)} \frac{\norm{v}_{L^\infty(\Omega)}}{\norm{v}_{H^1(\Omega)}}
 \end{align*}
 $$
+
 Sobolev's inequality tells us that
+
 $$
 \norm{v}_{L^\infty(\Omega)} \leq c\norm{v}_{H^1(\Omega)}
 $$
+
 and thus
+
 $$
 \norm{\delta_0}_{H'} \leq c
 $$
+
 So $\delta_0$ is a bounded linear functional on $H^1(\Omega)$, which means it is continous.
 
 From real analysis, we know that the preimage of a closed set under a continuous function is closed. Thus $V = \inv{\delta_0}(\curlies{0})$ is closed in $H^1(\Omega)$, so it is a subspace.
@@ -156,12 +172,15 @@ From real analysis, we know that the preimage of a closed set under a continuous
 Recall:
 
 For our original boundary value problem, the weak form is to find $u \in V$ such that $a(u, v) = F(v)$ for each $v \in V$ where
+
 $$
 a(u, v) = \int_\Omega u'v' \d x \text{ and } F(v) = \int_\Omega f v\ d x
 $$
+
 We know that $V \subseteq H^1(\Omega)$ is a subspace.
 
 We want $a$ to be an inner product on $V$. Clearly $a$ is symmetric. $a$ is bounded, since
+
 $$
 \begin{align*}
 \abs{a(u, v)} &= \abs{\int_\Omega u' v' \d x} \\
@@ -169,7 +188,9 @@ $$
 &\leq \norm{u'}_{L^2(\Omega)} \norm{v'}_{L^2(\Omega)} \tag{Hölder's inequality}
 \end{align*}
 $$
+
 $a$ is coercive too, since
+
 $$
 \begin{align*}
 a(v, v) &= \int_\Omega (v')^2 \d x \\
@@ -202,6 +223,7 @@ $$
 The work above shows that $a$​ is an inner product on $V$​.
 
 Is $F$ a bounded functional on $V$, i.e. is there some $c$ so that $\abs{F(v)} \leq c\norm{v}_V$ (where $\norm{v}_V = \norm{v}_{H^1(\Omega)}$)?
+
 $$
 \begin{align*}
 \abs{F(v)} &= \abs{\int_\Omega fv \d x} \\
@@ -210,6 +232,7 @@ $$
 &\leq \norm{f}_{L^2(\Omega)} \norm{v}_{H^1(\Omega)}
 \end{align*}
 $$
+
 If $f \in L^2(\Omega)$, then $\norm{f}_{L^2(\Omega)} = c < \infty$ so $F$ is bounded.
 
 ### Riesz representation theorem
