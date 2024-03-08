@@ -40,7 +40,25 @@ Suppose $(H, \angles{\cdot, \cdot})$ is a Hilbert space, $V_h \subseteq H$ is a 
 
 $(V_h, a(\cdot, \cdot))$ is a Hilbert space.
 
-We know that $F \in V'$, i.e. $\abs{F(v)} \leq c \norm{v}_V$ for all $v \in V$. But, $V_h \subseteq V$ so we also have $\abs{F(v_h)} \leq c \norm{v_h}$ for all $v_h \in V_h$. Thus, we know that for the restriction of $F$ to $V_h$, $F \big \vert_{V_h} \in V_h'$. Using the Riesz representation theorem, we know that there is an element of the primal space that corresponds to this functional, i.e. $u_h \in V_h$ so that $a(u_h, v_h) = F(v_h)$ for all $v_h \in V$, as required.
+We know that $F \in V'$, i.e. $\abs{F(v)} \leq c \norm{v}_V$ for all $v \in V$. But, $V_h \subseteq V$ so we also have
+
+$$
+\abs{F(v_h)} \leq c \norm{v_h}
+$$
+
+Thus, we know that for the restriction of $F$ to $V_h$,
+
+$$
+F \big \vert_{V_h} \in V_h'
+$$
+
+Using the Riesz representation theorem, we know that there is an element of the primal space that corresponds to this functional, i.e.
+
+$$
+\text{there is some } u_h \in V_h \text{ so that } a(u_h, v_h) = F(v_h) \text{ for all } v_h \in V
+$$
+
+This is exactly what we want!
 
 ## Nonsymmetric weak formulations
 
@@ -102,7 +120,7 @@ $$
 &= \abs{\angles{u, v}_{H^1(\Omega)} + \angles{u', v}_{L^2(\Omega)}} \\
 &\leq \abs{\angles{u, v}_{H^1(\Omega)}} + \abs{\angles{u', v}_{L^2(\Omega)}} \tag{triangle ineq} \\
 &\leq \norm{u}_{H^1(\Omega)} \norm{v}_{H^1(\Omega)} + \norm{u'}_{L^2(\Omega)} \norm{v}_{L^2(\Omega)} \\
-&\leq 2\norm{u}_{H^1(\Omega)} \norm{v}_{H^1(\Omega)} \tag{$\norm{\cdot}_{L^2(\Omega)} \leq \norm{\cdot}_{H^1(\Omega}$}
+&\leq 2\norm{u}_{H^1(\Omega)} \norm{v}_{H^1(\Omega)} \tag{$H^1$ norm $\geq$ $L^2$ norm}
 \end{align*}
 $$
 
