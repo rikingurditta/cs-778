@@ -47,15 +47,15 @@ Consider some function $v \in C^2_D(\Domain)$, then we can equivalently solve $-
 
 $$
 \begin{align*}
--\int_0^1 u''(x) v(x) \d x &= \int_0^1 f(x) \d x \\
--\int_0^1 u'(x) v'(x) \d x - (u'(1) v(1) - u'(0) v(0)) &= \int_0^1 f(x) \d x
+-\int_0^1 u''(x) v(x) \d x &= \int_0^1 f(x) v(x) \d x \\
+-\int_0^1 u'(x) v'(x) \d x - (u'(1) v(1) - u'(0) v(0)) &= \int_0^1 f(x) v(x) \d x
 \end{align*}
 $$
 
 And thus our boundary value problem is equivalently to find $u \in C^2_D(\Domain)$ such that
 
 $$
-\int_0^1 u'(x)v'(x) \d x = \int_0^1 f(x) \d x
+\int_0^1 u'(x)v'(x) \d x = \int_0^1 f(x) v(x) \d x
 $$
 
 for all $v \in C^2_D(\Domain)$

@@ -227,7 +227,7 @@ If $\phi \in C^\infty_O(\Omega)$, i.e. it vanishes at $\partial \Omega$, then th
 
 ## Weak derivative
 
-Let $f \in L^1_\text{loc}(\Omega)$. $f$ has a **weak derivative** if there exists $g \in L^1_\text{loc}(\Omega)$ so that for all $phi \in C_0^\infty(\Omega)$,
+Let $f \in L^1_\text{loc}(\Omega)$. $f$ has a **weak derivative** if there exists $g \in L^1_\text{loc}(\Omega)$ so that for all $\phi \in C_0^\infty(\Omega)$,
 
 $$
 \int_\Omega g(x) \phi(x) \d x = (-1)^{\abs \alpha} \int_\Omega f(x) \phi^{(\alpha)} \d x
@@ -316,13 +316,15 @@ $$
 
 It can be shown that $\text{Lip}(\Omega) = W_\infty^1(\Omega)$.
 
+We define the space $H^k_p(\Omega)$ as the closure of $C^k(\Omega) \subseteq W^k_p(\Omega)$, i.e. functions that are at least $k$ times differentiable and all of their limits.
+
 ### Sobolev spaces are Banach spaces
 
 (A Banach space is a complete normed vector space)
 
 Sobolev spaces are the "completions" of $C^\infty$ spaces. It is often difficult to work with functions in $W_p^k(\Omega)$, so instead we can deal with a sequence of $C^\infty(\Omega)$ functions that converge to our desired $W_p^k(\Omega)$ function.
 
-Let $\Omega$ be any open set. Then $C^\infty(\Omega) \cap W_p^k(\Omega)$ is dense in $W_p^k(\Omega)$ for $1 \leq p < \infty$, i.e. for any $u \in W_p^(\Omega)$ there is a sequence $\curlies{u_m} \in C^\infty(\Omega) \cap W_p^k(\Omega)$ so that $\norm{u_m - u}_{W_p^k(\Omega)} \to 0$.
+Let $\Omega$ be any open set. Then $C^\infty(\Omega) \cap W_p^k(\Omega)$ is dense in $W_p^k(\Omega)$ for $1 \leq p < \infty$, i.e. for any $u \in W_p^k(\Omega)$ there is a sequence $\curlies{u_m} \in C^\infty(\Omega) \cap W_p^k(\Omega)$ so that $\norm{u_m - u}_{W_p^k(\Omega)} \to 0$.
 
 ### Sobolev semi-norms
 
@@ -434,7 +436,7 @@ $$
 
 A linear functional on a Banach space is continuous if and only if it is bounded, i.e. if and only if $\abs{L(v)} \leq c\norm{u}_B$.
 
-The set of all linear functionals on $B$ is the **dual space** of $B$, denoted by $B'$.
+The set of all linear functionals on $B$ is the **dual space** of $B$, denoted by $B'$. However in this course, we usually use $B'$ to denote the set of bounded linear functionals.
 
 $B'$ is a Banach space with the dual norm
 
@@ -443,3 +445,4 @@ $$
 $$
 
 The dual space of $L^p(\Omega)$ for $1 \leq p < \infty$ is $(L^p(\Omega))' = L^q(\Omega)$ where $\displaystyle \frac{1}{p} + \frac{1}{q} = 1$
+
