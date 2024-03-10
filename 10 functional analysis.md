@@ -105,7 +105,7 @@ $$
 and
 
 $$
-\norm{fg}_{L^1(\Omega)} \leq \norm{f}_{L^p(\Omega)} + \norm{g}_{L^q(\Omega)}
+\norm{fg}_{L^1(\Omega)} \leq \norm{f}_{L^p(\Omega)} \norm{g}_{L^q(\Omega)}
 $$
 
 #### Schwarz inequality
@@ -113,7 +113,7 @@ $$
 This is Hölder's inequality with $p = q = 2$:
 
 $$
-\norm{fg}_{L^1(\Omega)} = \int_\Omega \abs{f(x)g(x)} \d x \leq \norm{f}_{L^2(\Omega)} + \norm{g}_{L^2(\Omega)}
+\norm{fg}_{L^1(\Omega)} = \int_\Omega \abs{f(x)g(x)} \d x \leq \norm{f}_{L^2(\Omega)} \norm{g}_{L^2(\Omega)}
 $$
 
 ## Topology of $L^p$ as a vector space
