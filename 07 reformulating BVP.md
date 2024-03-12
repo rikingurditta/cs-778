@@ -1,4 +1,4 @@
-# 07 Reformulating boundary value problems
+# Reformulating boundary value problems
 
 $$
 \newcommand{\x}{\mathbf x}

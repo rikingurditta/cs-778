@@ -47,20 +47,20 @@ Let $v$ be smooth enough, so
 $$
 \begin{align*}
 -v (\kappa u')' &= fv \tag{within $\Omega$} \\
--\int_0^1 v \dbyd{}{x} \parens{\kappa(x) \dbyd{u}{x}(x)} \d x &= \int_0^1 fv \d x \\
--\int_0^1 v \dbyd{}{x} \parens{\kappa(x) \parens{\dbyd{w}{x}(x) + \dbyd{G}{x}(x)}} \d x &= \int_0^1 fv \d x \tag{$u = w + G$} \\
-\int_0^1 \dbyd{v}{x}(x) \kappa(x) \parens{\dbyd{w}{x}(x) + \dbyd{G}{x}(x)} \d x \quad&\\
-- v(x) \kappa(x) \parens{\dbyd{w}{x}(x) + \dbyd{G}{x}(x)} \Bigg\vert_0^1 &= \int_0^1 fv \d x \tag{integration by parts}
+-\int_0^1 v \dbyd{}{x} \parens{\kappa \dbyd{u}{x}} \d x &= \int_0^1 fv \d x \\
+-\int_0^1 v \dbyd{}{x} \parens{\kappa(x) \parens{\dbyd{w}{x} + \dbyd{G}{x}}} \d x &= \int_0^1 fv \d x \tag{$u = w + G$} \\
+\int_0^1 \dbyd{v}{x} \kappa(x) \parens{\dbyd{w}{x} + \dbyd{G}{x}} \d x \quad&\\
+- v(x) \kappa(x) \parens{\dbyd{w}{x} + \dbyd{G}{x}} \Bigg\vert_0^1 &= \int_0^1 fv \d x \tag{int. by parts}
 \end{align*}
 $$
 
-Let $V = \curlies{v \in L^2(\Omega) : v' \in L^2(\Omega) \text{ and } v'(0) = 0}$ and $V_\alpha = \curlies{v \in L^2(\Omega) : v' \in L^2(\Omega) \text{ and } v'(0) = \alpha}$.
+Let $V = \curlies{v \in L^2(\Omega) : v' \in L^2(\Omega) \text{ and } v(0) = 0}$ and $V_\alpha = \curlies{v \in L^2(\Omega) : v' \in L^2(\Omega) \text{ and } v'(0) = \alpha}$.
 
 Let $v \in V$ and $G \in V_{\alpha}$. Then,
 
 $$
 \begin{align*}
--v(x) \kappa(x) \parens{\dbyd{w}{x}(x) + \dbyd{G}{x}(x)} \Bigg\vert_0^1 &= -v(1) \kappa(1) \parens{\dbyd{w}{x}(1) + \dbyd{G}{x}(1)} \tag{$v(0) = 0$} \\
+-v(x) \kappa(x) \parens{\dbyd{w}{x} + \dbyd{G}{x}} \Bigg\vert_0^1 &= -v(1) \kappa(1) \parens{\dbyd{w}{x}(1) + \dbyd{G}{x}(1)} \tag{$v(0) = 0$} \\
 &= v(1) \beta \tag{boundary condition}
 \end{align*}
 $$
@@ -68,7 +68,7 @@ $$
 Thus, our weak formulation becomes to find $w \in V$ so that
 
 $$
-\int_0^1 \dbyd{w}{x}(x) \dbyd{v}{x}(x) \d x = -\int [...]
+\int_0^1 \kappa(x) \dbyd{w}{x}(x) \dbyd{v}{x}(x) \d x = \int_0^1 f(x) v(x) \d x - \int_0^1 \kappa(x) \dbyd{G}{x}(x)\dbyd{v}{x} \d x
 $$
 
 ## FEM
@@ -320,9 +320,7 @@ A_{ij}^{(k)} &= \int_{k_k} \kappa \dbyd{\psi_{k,j}}{x}\dbyd{\psi_{k,i}}{x} \d x 
 $$
 
 $$
-
 To actually compute these integrals over $[0, 1]$, we must use quadrature to approximate
-
 $$
 \int_0^1 g(\xi) \d \xi \approx \sum_{i=1}^n \frac12 b_i g\parens{\frac12 c_i + \frac12}
 $$

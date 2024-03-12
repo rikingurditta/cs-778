@@ -1,4 +1,4 @@
-# 08 Finite element method
+# Finite element method
 
 $$
 \newcommand{\x}{\mathbf x}

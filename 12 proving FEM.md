@@ -137,3 +137,43 @@ a(v, v) &= \int_\Omega ((v')^2 + v'v + v^2) \d x \\
 $$
 
 So $a$ is coercive.
+
+## Céa's theorem
+
+Suppose $u \in V$ solves the weak formulation of our problem and $u_h \in V_h$ solves the finite element method problem. Then
+
+$$
+\begin{align*}
+\text{WF:}\quad a(u, v) &= F(v) \text{ for all } v \in V \\
+\Rightarrow a(u, v_h) &= F(v_h) \text{ for all } v_h \in V_h (\subseteq V) \\
+\text{FEM:}\quad a(u_h, v_h) &= F(v_h) \text{ for all } v_h \in V_h
+\end{align*}
+$$
+
+We can combine these facts to get an orthogonality result:
+
+$$
+a(u - u_h, v_h) = 0 \text{ for all } v_h \in V_h
+$$
+
+Consider $a(u - u_h, u - u_h)$. Since $a$ is coercive, we know
+
+$$
+\begin{align*}
+\alpha \norm{u - u_h}_V^2 &\leq a(u - u_h, u - u_h) \\
+&= a(u - u_h, u - v_h + v_h - u_h) \\
+&= a(u - u_h, u - v_h) + a(u - u_h, \underbrace{v_h - u_h}_{\in V_h}) \\
+&= a(u - u_h, u - v_h) \tag{orthogonality} \\
+\alpha \norm{u - u_h}_V^2 &\leq c\norm{u - u_h}_V \norm{u - v_h}_V \\
+\norm{u - u_h}_V &\leq \frac{c}{\alpha} \norm{u - v_h}_V
+\end{align*}
+$$
+
+Since this holds for all $v_h \in V_h$, it holds for the $v_h$ that minimizes $\norm{u - v_h}_V$, so we can conclude
+
+$$
+\norm{u - u_h}_V \leq \frac{c}{\alpha} \min_{v \in V_h} \norm{u - v_h}_V
+$$
+
+Therefore the finite element method finds a good solution!
+

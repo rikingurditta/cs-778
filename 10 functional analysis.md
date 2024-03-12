@@ -42,7 +42,7 @@ This generalizes to the $L^p$ norm:
 For $1 \leq p < \infty$
 
 $$
-\norm f_{L^p(\Omega)} = \parens{\int_\Omega f(x)^p \d x}^{1/p}
+\norm f_{L^p(\Omega)} = \parens{\int_\Omega \abs{f(x)}^p \d x}^{1/p}
 $$
 
 For $p = \infty$,
@@ -443,7 +443,7 @@ $$
 
 A linear functional on a Banach space is continuous if and only if it is bounded, i.e. if and only if $\abs{L(v)} \leq c\norm{u}_B$.
 
-The set of all linear functionals on $B$ is the **dual space** of $B$, denoted by $B'$. However in this course, we usually use $B'$ to denote the set of bounded linear functionals.
+The set of all linear functionals on $B$ is the **dual space** of $B$, usually denoted by $B'$. However in this course, we usually use $B^\ast$ to denote the dual space and $B'$ to denote the set of bounded linear functionals, i.e. the subset of the dual space that is continuous.
 
 $B'$ is a Banach space with the dual norm
 

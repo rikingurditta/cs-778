@@ -16,3 +16,4 @@ Winter 2024 session, taught by [Sander Rhebergen](https://uwaterloo.ca/scholar/s
 1. [Functional analysis](10 functional analysis)
 1. [More functional analysis](11 more functional analysis)
 1. [Proving that FEM works](12 proving FEM)
+1. [$n$-dimensional problems](13 n dimensions)
