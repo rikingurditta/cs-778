@@ -55,3 +55,20 @@ $$
 p(x, y) = \sin
 \end{align*}
 $$
+
+$$
+\abs{x - \delta} \leq \abs{x - E} \text{ because } \abs{\delta} \leq E
+$$
+
+
+$$
+\abs{a - b} \leq \abs a - \abs b
+$$
+
+$$
+\begin{align*}
+\abs a = \abs{a - b + b} &\leq \abs{a - b} + \abs{b} \\
+\abs a - \abs b &\leq \abs{a - b}
+\end{align*}
+$$
+

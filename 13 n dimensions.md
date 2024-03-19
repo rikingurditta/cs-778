@@ -1,4 +1,4 @@
-# $n$-dimensional problems
+# n-dimensional problems
 
 $$
 \newcommand{\x}{\mathbf x}
