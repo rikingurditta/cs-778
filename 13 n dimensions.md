@@ -235,13 +235,17 @@ $$
 &\leq \norm{\nabla u}_{H^1(\Omega)} \norm{\nabla v}_{H^1(\Omega)}
 \end{align*}
 $$
+
 $a$ is coercive:
 
 First, Friedrich's inequality with $p=2$ tells us that for all $u \in H^1(\Omega)$,
+
 $$
 \norm{u - \overline u}_{L^2(\Omega)} \leq \norm{u - \overline u}_{H^1(\Omega)} \leq c \abs{u}_{H^1(\Omega)}
 $$
+
 So if $u \in V$ i.e. $\overline u = 0$, then we know
+
 $$
 \begin{align*}
 \norm{v}_{L^2(\Omega)} &\leq c \abs{v}_{H^1(\Omega)} \\
@@ -250,7 +254,9 @@ $$
 \norm{v}_{H^1(\Omega)}^2 &\leq (1 + c^2) \abs{v}_{H^1(\Omega)}^2 \\
 \end{align*}
 $$
+
 So if $v \in V$,
+
 $$
 \begin{align*}
 a(v, v) &= \int_\Omega \abs{\nabla v} \d x \\
@@ -258,6 +264,7 @@ a(v, v) &= \int_\Omega \abs{\nabla v} \d x \\
 &\geq \frac{1}{1 + c^2} \norm{v}_{H^1(\Omega)}^2
 \end{align*}
 $$
+
 Thus by the Riesz representation theorem (or Lax-Milgram), the problem is well-posed.
 
 ### Well-posedness of mixed Dirchlet/Neumann boundary conditions
