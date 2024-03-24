@@ -65,6 +65,7 @@ This theorem helps us prove coercivity.
 ### Trace theorem
 
 For $1 \leq p \leq \infty$ and any $v \in W_p^1(\Omega)$,
+
 $$
 \norm{v}_{L^p(\partial \Omega)} \leq c \norm{v}_{L^p(\Omega)}^{1-1/p} \cdot \norm{v}_{W_p^1(\Omega)}^2
 $$
@@ -80,10 +81,13 @@ $$
 ### Poincaré inequality
 
 For $v \in \overset{0}{W_p^1}(\Omega)$ ($= H_0^1(\Omega)$)
+
 $$
 \norm{v}_{W_p^1(\Omega)} \leq c \abs{v}_{W_p^1(\Omega)}
 $$
+
 (Reminder in case you forgot:)
+
 $$
 \overset{0}{W_p^1}(\Omega) = \curlies{v \in W_p^1(\Omega) : v \big \vert_{\partial \Omega} = 0)}
 $$
@@ -269,26 +273,33 @@ $$
 Our problem is to find $u \in V$ so that $a(u, v) = F(v)$ for all $v \in V$.
 
 We have the same bilinear form $a$ and functional $F$ as before,:
+
 $$
 a(u, v) = \int_\Omega \nabla u \cdot \nabla v \d x \text{ and } F(v) = \int_\Omega f v \d x
 $$
+
 To enforce our Dirichlet boundary conditions,
+
 $$
 V = \curlies{v \in H^1(\Omega) : v \big \vert_{\Gamma_D} = 0}
 $$
+
 The same proofs as before can show that $a$ is symmetric and bounded.
 
 For coercivity:
+
 $$
 \begin{align*}
 a(v, v) = \int_\Omega \abs{\nabla v}^2 \d x = \abs{v}_{H^1(\Omega)}^2
 \end{align*}
 $$
+
 We apply the lemma below:
 
 #### Lemma: $\big \lVert v \big \rVert_{L^2(\Omega)} \leq c \left( \lvert v \rvert_{H^1(\Omega)} + \left\lvert \int_{\Gamma_D} v\,  \text{d} s \right\rvert \right)$
 
 Let $v \in H^1(\Omega)$ be arbitrary. Then
+
 $$
 \begin{align*}
 \norm{v}_{L^2(\Omega)} &= \norm{v - \overline v + \overline v}_{L^2(\Omega)} \\
@@ -298,7 +309,9 @@ $$
 &= c \abs{v}_{H^1(\Omega)} + \sqrt{\overline v^2 \abs{\Omega}} \tag{$\overline v$ is a constant}
 \end{align*}
 $$
+
 Looking at the second term,
+
 $$
 \begin{align*}
 \sqrt{\overline v^2 \abs{\Omega}} &= \abs{\overline v} \sqrt{\abs{\Omega}} \\
@@ -307,7 +320,9 @@ $$
 &\leq \frac{\abs{\Omega}}{\abs{\Gamma_D}} \parens{\abs{\int_{\Gamma_D} v \d s} + \abs{\int_{\Gamma_D} \parens{\overline v - v} \d s}} \\
 \end{align*}
 $$
+
 However,
+
 $$
 \begin{align*}
 \abs{\int_{\Gamma_D} (\overline v - v) \d s} &\leq \int_{\Gamma_D} \abs{1 \cdot (\overline v - v)} \d s \\
@@ -315,21 +330,28 @@ $$
 &\leq \sqrt{\abs{\Gamma_D}} \norm{\overline v - v}_{L^2(\partial \Omega)}
 \end{align*}
 $$
+
 Using the trace theorem, we know
+
 $$
 \norm{\overline v - v}_{L^2(\partial \Omega)}^2 \leq c^2 \norm{\overline v - v}_{L^2(\Omega)} \norm{\overline v - v}_{H^1(\Omega)}
 $$
+
 Since $2ab \leq a^2 + b^2$, we can further show
+
 $$
 \begin{align*}
 \norm{v - \overline v}_{L^2(\Omega)}^2 &\leq c^2 \parens{ \frac{1}{2}\norm{\overline v - v}_{L^2(\Omega)}^2 + \norm{\overline v - v}_{H^1(\Omega)}^2 } \\
 &= c^2 \parens{\norm{\overline v - v}_{L^2(\Omega)}^2 + \frac{1}{2}\abs{v}_{H^1(\Omega)}^2}
 \end{align*}
 $$
+
 Using Friedrich's inequality (fill this in later [...]), we can conclude that
+
 $$
 \norm{v - \overline v}^2 \leq C \abs{v}_{H^1(\Omega)}^2
 $$
+
 Connecting this to our previous work, we now know
 
 [...]
@@ -343,9 +365,11 @@ Thus $a$ is coercive, so the problem is well-posed.
 Let $\Omega \subseteq \R^n$ (with $n \in \curlies{1, 2, 3}$) and suppose it satisfies all conditions necessary for the interpolation estimate to hold:
 
 For all $u \in H^m(\Omega)$,
+
 $$
 \norm{u - \I_h u}_{H^1(\Omega)} \leq c h^{m-1} \abs{u}_{H^m(\Omega)}
 $$
+
 where $\I_h u \in V_h \subseteq V$ is the interpolant of $u$.
 
 Then this inequality holds for solutions to all of our Poisson problems (i.e. all boundary condition cases).
@@ -353,6 +377,7 @@ Then this inequality holds for solutions to all of our Poisson problems (i.e. al
 *Proof.*
 
 For all Poisson problems, we have shown that $a(\cdot, \cdot)$ is bounded and coercive on $V$, so we can apply Céa's theorem to find
+
 $$
 \begin{align*}
 \norm{u - u_h}_{H^1(\Omega)} &\leq \frac{c}{\alpha} \min_{v \in V_h} \norm{u - v}_{H^1(\Omega)} \\
@@ -360,15 +385,19 @@ $$
 &\leq c h^{m-1} \abs{u}_{H^m(\Omega)}
 \end{align*}
 $$
+
 This shows convergence! And furthermore it shows that smoother functions give lower error (and thus faster convergence).
 
 ### $L^2$ error
 
 Let $g = u - u_h$, so $g \in L^2(\Omega)$. Then assuming conditions hold for our regularity assumption (below), we know that there is a $w$ that solves the Poisson problem with $g$ that satisfies
+
 $$
 \abs{w}_{H^2(\Omega)} \leq c \norm{u - u_h}_{L^2(\Omega)}
 $$
+
 Since $w$ solves the Poisson problem, we know that for any $v \in V$,
+
 $$
 \begin{align*}
 a(w, v) &= \angles{g, v}_{L^2(\Omega)} \\
@@ -377,7 +406,9 @@ a(w, v) &= \angles{g, v}_{L^2(\Omega)} \\
 &= \norm{u - u_h}_{L^2(\Omega)}^2
 \end{align*}
 $$
+
 So working with our $L^2$ norm,
+
 $$
 \begin{align*}
 \norm{u - u_h}_{L^2(\Omega)}^2 &= a(w, u - u_h) \\
@@ -395,6 +426,7 @@ $$
 #### Elliptic regularity
 
 If $g \in L^2(\Omega)$ and $w$ solves our Poisson problem:
+
 $$
 \begin{cases}
 -\Delta w = g & \text{on } \Omega \\
@@ -402,9 +434,12 @@ w = 0 & \text{on } \Gamma_D \\
 \nabla \w \cdot \n = 0 & \text{on } \Gamma_N
 \end{cases}
 $$
+
 Then
+
 $$
 \abs{w}_{H^2(\Omega)} \leq c \norm{g}_{L^2(\Omega)}
 $$
+
 This is true if $\Omega$ has a smooth boundary, if $\Gamma_D = \partial \Omega$ (pure Dirichlet), or if $\Gamma_D = \emptyset$ (pure Neumann).
 

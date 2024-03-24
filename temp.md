@@ -1,4 +1,4 @@
-# Temp
+## Temp
 
 $$
 \newcommand{\x}{\mathbf x}
@@ -72,3 +72,69 @@ $$
 \end{align*}
 $$
 
+
+
+
+
+
+
+Let $\Omega = (0, 1)$ be our domain. Our original boundary value problem is, find a function $u$ such that
+$$
+-u'' + \beta u = f \text{ with } u'(0) = 0 \text{ and } u(1) = 0
+$$
+Define:
+$$
+\begin{align*}
+V &= \curlies{v \in H^1(\Omega) : v(1) = 0} \\
+a(u, v) &= \int_\Omega u' (\beta v + v') \d x \\
+F(v) &= \int_\Omega f v \d x \\
+\end{align*}
+$$
+Suppose $u \in V$ solves $F(u) = a(u, v)$ for every $v \in V$. Then $u$ solves the original boundary value problem.
+
+*Proof.*
+
+Since $u \in V$, we know that $u(1) = 0$.
+
+Let $v \in V$​ be arbitrary.
+
+Recall that the $L^2(\Omega)$ inner product is
+$$
+\angles{u, v} = \int_\Omega u v \d x
+$$
+Then, rewriting our equation using this inner product,
+$$
+\begin{align*}
+F(v) &= a(u, v) \\
+\angles{f, v} &= \angles{-u'' + \beta u', v} \\
+\angles{f - (-u'' + \beta u'), v} &= 0
+\end{align*}
+$$
+Since this holds for all $v \in V$, by the properties of the inner product we must have $f = -u'' + \beta u'$.
+$$
+\begin{align*}
+F(v) &= a(u, v) \\
+&= \int_\Omega u'(\beta v + v') \d x \\
+&= \int_\Omega u' v' \d x + \beta \int_\Omega u' v \d x \\
+&= u' v \bigg \vert_0^1 - \int_\Omega u'' v \d x + \beta \int_\Omega u' v \d x \tag{integration by parts} \\
+&= u'(1) \underbrace{v(1)}_{=0} - u'(0)v(0) + \underbrace{\int_\Omega (-u'' + \beta u') v \d x}_{= F(v)} \\
+0 &= -u'(0) v(0)
+\end{align*}
+$$
+Since $v \in V$ is arbitrary, this must hold for $v(x) = 1 - x$, in which case $v(0) = 1$. So we must have $-u'(0) = 0$.
+
+So $u$ solves the original BVP.
+
+
+
+
+
+
+
+
+$$
+\begin{align*}
+\int_\Omega (u'v' + \beta uv) \d x &= \int_\Omega u'v' \d x + \beta \int_\Omega uv \d x \\
+&= u'(1) v(1) - u'(0) v(0) - \int_\Omega u'' v \d x + \beta \int_\Omega u v \d x
+\end{align*}
+$$

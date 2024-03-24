@@ -218,3 +218,120 @@ $$
 This means that $u_h(x, t) \big \vert_{K_j} = u_h^j(x, t) = \hat u_h^j(t)$
 
 Note that this is basically the same discretization as the finite element method, but using $\phi_j = \delta_{i,j}$ (which are discontinuous) as our basis functions.
+
+## 2022-03-21
+
+The finite volume method is an approximation tot he first integral form of the conservation law where $\hat u_1^j(t)$ is an approximation  to $\overline u^j(t)$, the mean of $u(x, t)$ in element $K_j$
+
+## Time discretization
+
+Let $0 = t_0 < t_1 < ... < t_M = T$ and $\Delta t_n = t_n - t_{n-1}$
+
+We can apply any ODE time integration method we want. However, if our spatial discretization is only first-order accurate, there is no use in using a time stepping method with higher than first order accuracy.
+
+Using Euler's method:
+
+$$
+(\hat u_1^j)^n = (\hat u_1^j)^{n-1} + \frac{\Delta t_n}{h_j} \parens{\hat f_{j-1}^{n-1} - \hat f_j^{n-1}}
+$$
+
+Our fully discrete scheme is an approximation to the second integral form of conservation
+
+$$
+\begin{align*}
+\int_\Omega u(x, T) \d x - \int_\Omega u(x, 0) \d x - \int_0^T f(u(0, t)) \d t + \int_0^T f(u(1, t)) \d t &= 0\\
+\sum_{j=1}^N \sum_{n=1}^M \brackets{\int_{K_j} u(x, t^n) \d x - \int_{K_j} u(x, t_{n-1}) \d x - \int_{t_{n-1}}^{t_n} f(u(x_{j-1}, t)) \d t + \int_{t_{n-1}}^{t_n} f(u(x_j, t)) \d t } &= 0
+\end{align*}
+$$
+
+Define
+
+$$
+\overline f_j^{n-1} = \frac{1}{\Delta t_n} \int_{t_{n-1}}^{t_n} f(u(x_j, t)) \d t
+$$
+
+Then
+
+$$
+\begin{align*}
+\underbrace{\int_{K_j} u(x, t^n) \d x}_{h_j \hat u_j^n}
+&=
+- \underbrace{\int_{K_j} u(x, t_{n-1}) \d x}_{h_j \hat u_j^{n-1}}
+- \underbrace{\int_{t_{n-1}}^{t_n} f(u(x_{j-1}, t)) \d t}_{\Delta t_n \overline f_{j-1}^{n-1}}
++ \underbrace{\int_{t_{n-1}}^{t_n} f(u(x_j, t)) \d t}_{\Delta t_n \overline f_j^{n-1}} \\
+\overline u_j^n &= \overline u_j^{n-1} + \frac{\Delta t_n}{h_j}\parens{\overline f_{j-1}^{n-1} + \overline f_{j-1}^n}
+\end{align*}
+$$
+
+So this method is fully explicit!
+
+### Courant-Friedrich-Lewy (CFL) condition
+
+From now on, let's stick with uniform discretization, i.e. for all $j$ and $n$, $h_j = h$ and $\Delta t_n = \Delta t$
+
+The **CFL condition** is a constraint on our time step size. Suppose $\lambda(u)$ returns the eigenvalue of $u$, then the CFL condition says that we require
+
+$$
+\max_j \abs{ \frac{\Delta t}{h}\lambda\parens{(u_1^j)^{n-1}} } \leq c \text{ where } 0 < c < 1
+$$
+
+## Discontinuous solutions
+
+The PDE $\partial_t u + \partial_x f(u) = 0$ is not valid at points where $u(x, t)$ is discontinuous. Let's derive an expression that *is* true wehn $u$ is discontinuous.
+
+For any $(a, b) \subseteq \Omega$, we know
+
+$$
+\dbyd{}{t} \int_a^b u(x, t) \d x = f(u(a, t)) - f(u(b, t))
+$$
+
+Let $x_d(t)$ denote the point where $u$ is discontinuous. Suppose $x_d(t) \in (x_L, x_R) \subseteq \Omega$, then
+
+$$
+\dbyd{}{t} \int_{x_L}^{x_d(t)} u(x, t) \d x + \dbyd{}{t} \int_{x_d(t)}^{x_R} u(x, t) \d x = f(u(x_L, t)) - f(u(x_R, t))
+$$
+
+Applying [Leibniz's rule](https://en.wikipedia.org/wiki/Leibniz_integral_rule) for differentiating an integral, we find
+
+$$
+[u(x_d^-, t) - u(x_d^+, t)] \dbyd{x}{t} + \int_{x_L}^{x_d(t)} \partial_t u(x, t) \d x + \int_{x_d(t)}^{x_R} \partial_t u(x, t) \d x = f(u(x_L, t)) - f(u(x_R, t))
+$$
+
+We refer to $\displaystyle \dbyd{x}{t}$ as the **shock speed** $S$.
+
+This holds for all $(x_L, x_R) \subseteq \Omega$ that contain $x_d(t)$. So if we shrink the domain on both sides $x_L \rightarrow x_d^-$ and $x_d^+ \leftarrow x_R$​, then the integral terms go to 0, and we get
+
+$$
+[u(x_L, t) - u(x_R, t)] S = f(u(x_L, t)) - f(u(x_R, t)) \\
+S = \frac{f(u(x_L, t)) - f(u(x_R, t))}{u(x_L, t) - u(x_R, t)}
+$$
+
+This is the **Rankine-Hugoniot condition**.
+
+### Example: Burgers' equation
+
+Consider Burgers' equation:
+
+$$
+\partial_t u + \partial_x \parens{\frac{1}{2} u^2} = 0
+$$
+
+When $u$ is discontinuous, by the Rankine Hugoniot condition, we have
+
+$$
+S = \frac{u_L^2/2 - u_R^2/2}{u_L - u_R} = \frac{1}{2} (u_L + u_R)
+$$
+
+However, consider the PDE we get by multiplying Burgers' equation by $2u$:
+
+$$
+2u\, \partial_t u + 2u\, \partial_x \parens{\frac{1}{2} u^2} = 0
+$$
+
+This will not satisfy the RH condition if we incorporate the new factors into the PDE. i.e. if we continue to say
+
+$$
+\partial_t ()
+$$
+
+
