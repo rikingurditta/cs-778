@@ -21,6 +21,7 @@ $$
 \newcommand{\BigO}{\mathcal O}
 \newcommand{\disclapl}[1][]{\partial_{#1} \overline \partial_{#1}}
 \newcommand{\Domain}{\overline \Omega}
+\newcommand{\SubLp}{_{L^p(\Omega)}}
 \DeclareMathOperator{\span}{span}
 \DeclareMathOperator{\ess}{ess}
 \DeclareMathOperator{\supp}{supp}
@@ -37,11 +38,11 @@ For a vector space $V$, an inner product $\angles{\cdot, \cdot} : V^2 \to \R$ is
 ### Examples of inner product spaces
 
 - $V = \R^n$ with $\angles{\x, \y} = \x \cdot \y$
-- $V = L^2(\Omega)$ with $\angles{u, v}_{L^p(\Omega)} = \displaystyle \int_\Omega uv \d x$
+- $V = L^2(\Omega)$ with $$\angles{u, v}_{L^2(\Omega)} = \displaystyle \int_\Omega uv \d x$$
   - ($L^p$ spaces are not inner product spaces in general, only $L^2$)
-- $V = W_2^k(\Omega)$ where $\angles{u, v} = \displaystyle \sum_{\abs \alpha \leq k} \angles{ D^\alpha u, D^\alpha v }_{L^p(\Omega)}$​
-  - so for $W_2^1$, $\angles{u, v} = \angles{u, v}_{L^p(\Omega)} + \angles{u', v'}_{L^p(\Omega)}$
-  - for $W_2^2$, $\angles{u, v} = \angles{u, v}_{L^p(\Omega)} + \angles{\partial_x u, \partial_x v}_{L^p(\Omega)} + \angles{\partial_y u, \partial_y v}_{L^p(\Omega)}$
+- $V = W_2^k(\Omega)$ where $$\angles{u, v} = \displaystyle \sum_{\abs \alpha \leq k} \angles{ D^\alpha u, D^\alpha v }_{L^2(\Omega)}$$
+  - so for $W_2^1$, $$\angles{u, v} = \angles{u, v}_{L^2(\Omega)} + \angles{u', v'}_{L^2(\Omega)}$$
+  - for $W_2^2$, $$\angles{u, v} = \angles{u, v}_{L^2(\Omega)} + \angles{\partial_x u, \partial_x v}_{L^2(\Omega)} + \angles{\partial_y u, \partial_y v}_{L^2(\Omega)}$$
   - Due to the importance of $p=2$, we denote $H^k(\Omega) = W_2^k(\Omega)$
 
 ### Schwartz inequality
