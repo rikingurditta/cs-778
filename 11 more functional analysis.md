@@ -226,7 +226,7 @@ The work above shows that $a$​ is an inner product on $V$​.
 Is $F$ a bounded functional on $V$? i.e., is there some $c$ so that
 
 $$
-\abs{F(v)} \leq c\norm{v}_V$ (where $\norm{v}_V = \norm{v}_{H^1(\Omega)}
+\abs{F(v)} \leq c\norm{v}_V \text{ where }\norm{v}_V = \norm{v}_{H^1(\Omega)}
 $$
 
 Expanding,
