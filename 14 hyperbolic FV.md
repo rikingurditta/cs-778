@@ -333,5 +333,3 @@ This will not satisfy the RH condition if we incorporate the new factors into th
 $$
 \partial_t ()
 $$
-
-
