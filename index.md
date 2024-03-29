@@ -19,3 +19,4 @@ Winter 2024 session, taught by [Sander Rhebergen](https://uwaterloo.ca/scholar/s
 1. [$n$​-dimensional problems](13 n dimensions)
 1. [Hyperbolic problems/Finite volume method](14 hyperbolic FV)
 1. [I was late again idk](15 not sure)
+1. [Discontinuous Galerkin methods](16 DG)

@@ -4,6 +4,7 @@ $$
 \newcommand{\x}{\mathbf x}
 \newcommand{\y}{\mathbf y}
 \newcommand{\f}{\mathbf f}
+\newcommand{\a}{\mathbf a}
 \newcommand{\j}{\mathbf j}
 \newcommand{\n}{\mathbf n}
 \newcommand{\v}{\mathbf v}
@@ -137,4 +138,44 @@ $$
 \int_\Omega (u'v' + \beta uv) \d x &= \int_\Omega u'v' \d x + \beta \int_\Omega uv \d x \\
 &= u'(1) v(1) - u'(0) v(0) - \int_\Omega u'' v \d x + \beta \int_\Omega u v \d x
 \end{align*}
+$$
+
+
+
+$$
+\begin{align*}
+\int_\Omega \a \cdot \nabla u \d x &= ... \\
+\a \cdot \nabla u &= a_1 \partials{u}{x} + a_2 \partials{u}{y} \\
+s(\x) &= \a \cdot \x + b \\
+\a \cdot \nabla u &= \nabla \cdot (u\a) \\
+&= \nabla \cdot (u \nabla s) \\
+-\nabla \cdot (\kappa \nabla u) + \a \cdot \nabla u &= f \\
+\nabla \cdot (-\kappa \nabla u + u\nabla s) &= f \\
+\int_\Omega \nabla \cdot (-\kappa \nabla u + u\nabla s) v \d x &= \int_\Omega f  v \d x \\
+v(-\kappa \nabla u + u\nabla s) \cdot \n \bigg\vert_{\partial \Omega} -\int_\Omega (-\kappa \nabla u + u \nabla s) \cdot \nabla v \d x &= \int_\Omega fv \d x
+\end{align*}
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$$
+
 $$

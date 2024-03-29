@@ -1,4 +1,4 @@
-# I was REALLY late today and I'm not sure what's going on
+# More on finite volume method
 
 $$
 \newcommand{\x}{\mathbf x}
@@ -171,3 +171,92 @@ $$
 ### Boundary conditions
 
 Boundary conditions are imposed through the numerical flux, i.e. we pass the boundary values into the flux function at the appropriate places.
+
+## Example problems
+
+### Linear advection equation
+
+$$
+\partial_t u + \partial_x (\alpha u) = 0 \text{ with } \alpha \in \R \text{ constant}
+$$
+
+The flux is $f(u) = \alpha u$. Since we are only dealing with one variable, the eigenvalue of the Jacobian of the flux is just the derivative with respect to $u$, i.e. $$\lambda = \partials{f}{u} = \alpha$$.
+
+The LLF numerical flux is
+
+$$
+\begin{align*}
+\hat f(a, b) &= \frac{1}{2}(f(a) + f(b)) - \frac{1}{2} \beta (b - a)
+\end{align*}
+$$
+
+Recall that $\beta = \max_s\abs{(\lambda(s))} = \abs \alpha$, so our flux is
+
+$$
+\begin{align*}
+\hat f(a, b) &= \frac{1}{2} (\alpha a + \alpha b) - \frac{1}{2} \abs{\alpha} (b - a) \\
+&= \frac{1}{2} (\alpha + \abs{\alpha}) a + \frac{1}{2} (\alpha - \abs{\alpha}) b
+\end{align*}
+$$
+
+Notice that if $\alpha > 0$ then $\abs{\alpha} = \alpha$, so
+
+$$
+\hat f(a, b) = \frac{1}{2} (2\alpha) a = \alpha a
+$$
+
+and our finite volume method becomes
+
+$$
+(\hat u_i^j)^n  (\hat u_i^j)^{n-1} + \frac{\alpha \Delta t}{h} \parens{(\hat u_i^{j-1})^{n-1} - (\hat u_i^j)^{n-1}}
+$$
+
+so we recover the backward finite difference method.
+
+And if $\alpha < 0$, then $\abs{\alpha} = -\alpha$​, so
+
+$$
+\hat f(a, b) = \frac{1}{2} (2\alpha) b = \alpha b
+$$
+
+and our finite volume method becomes
+
+$$
+(\hat u_i^j)^n  (\hat u_i^j)^{n-1} + \frac{\alpha \Delta t}{h} \parens{(\hat u_i^j)^{n-1} - (\hat u_i^{j+1})^{n-1}}
+$$
+
+so we recover the forward finite difference method.
+
+The CFL condition becomes $$\Delta t \leq \frac{ch}{\abs{\alpha}}$$.
+
+### Burger's equation
+
+$$
+\partial_t u + \partial_x (\frac{1}{2}u^2) = 0
+$$
+
+So the flux is $f(u) = \frac{1}{2} u^2$ with eigenvalue $$\lambda = \partials{f}{u} = u$$
+
+The LLF is thus
+
+$$
+\hat f(a, b) = \frac{1}{2} \parens{ \frac{1}{2}a^2 + \frac{1}{2}b^2 } - \frac{1}{2} \beta (b - a)
+$$
+
+To calculate $\beta$,
+
+$$
+\beta = \max_{\min(a,b) \leq s \leq \max(a, b)} \abs{\lambda(s)} = \max(\abs a, \abs b)
+$$
+
+So we get
+
+$$
+\hat f(a, b) = \frac{1}{2} \parens{ \frac{1}{2}a^2 + \frac{1}{2}b^2 } - \frac{1}{2} \max(\abs{a} \abs{b}) (b - a)
+$$
+
+The CFL condition becomes
+
+$$
+\Delta t \leq \frac{ch}{\gamma} \text{ where } \gamma = \max_{1 \leq j \leq N} \abs{(\hat u_i^j)^{n-1}}
+$$
