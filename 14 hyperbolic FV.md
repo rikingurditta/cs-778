@@ -277,7 +277,7 @@ $$
 
 ## Discontinuous solutions
 
-The PDE $\partial_t u + \partial_x f(u) = 0$ is not valid at points where $u(x, t)$ is discontinuous. Let's derive an expression that *is* true wehn $u$ is discontinuous.
+The PDE $\partial_t u + \partial_x f(u) = 0$ is not valid at points where $u(x, t)$ is discontinuous. Let's derive an expression that *is* true when $u$ is discontinuous.
 
 For any $(a, b) \subseteq \Omega$, we know
 
@@ -297,7 +297,9 @@ $$
 [u(x_d^-, t) - u(x_d^+, t)] \dbyd{x}{t} + \int_{x_L}^{x_d(t)} \partial_t u(x, t) \d x + \int_{x_d(t)}^{x_R} \partial_t u(x, t) \d x = f(u(x_L, t)) - f(u(x_R, t))
 $$
 
-We refer to $\displaystyle \dbyd{x}{t}$ as the **shock speed** $S$.
+We refer to $\displaystyle \dbyd{x}{t}$ as the **shock speed** $S$​.
+
+## Rankine-Hugoniot condition
 
 This holds for all $(x_L, x_R) \subseteq \Omega$ that contain $x_d(t)$. So if we shrink the domain on both sides $x_L \rightarrow x_d^-$ and $x_d^+ \leftarrow x_R$​, then the integral terms go to 0, and we get
 

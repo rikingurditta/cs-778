@@ -20,3 +20,6 @@ Winter 2024 session, taught by [Sander Rhebergen](https://uwaterloo.ca/scholar/s
 1. [Hyperbolic problems/Finite volume method](14 hyperbolic FV)
 1. [I was late again idk](15 not sure)
 1. [Discontinuous Galerkin methods](16 DG)
+1. [Systems of hyperbolic conservation laws](17 systems hyperbolic)
+
+[Final exam cheat sheet](cheat sheet)

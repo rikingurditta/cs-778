@@ -177,5 +177,15 @@ $$
 
 
 $$
-
+\begin{align*}
+\partial_t U + \partial_x F(U) &= 0 \\
+U &= \begin{pmatrix} h \\ hu \end{pmatrix} \\
+\partial_t U &= \begin{pmatrix} \partial_t h \\ \partial_t (hu) \end{pmatrix} \\
+\partial_t U &= \begin{pmatrix} \partial_t h \\ u\partial_t h + h\partial_t u \end{pmatrix} \\
+y &= hu \\
+U &= \begin{pmatrix} h \\ y \end{pmatrix} \\
+\partial_t U &= \begin{pmatrix} \partial_t h \\ \partial_t y \end{pmatrix} \\
+F(U) &= \begin{pmatrix} hu \\ hu^2 + \frac{1}{2}gh^2 \end{pmatrix} \\
+&= \begin{pmatrix} y \\ \frac{y^2}{h} + \frac{1}{2}gh^2 \end{pmatrix}
+\end{align*}
 $$
