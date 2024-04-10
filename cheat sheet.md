@@ -101,6 +101,58 @@ $$
 \disclapl[x]U = \frac{U_{j+1} - 2U_j + U_{j-1}}{h^2}
 $$
 
+### Mesh function norms
+
+#### Max norm
+
+$$
+\abs{v} = \norm{v}_{\infty, h} = \sup_j \abs{v_j}
+$$
+
+#### $L^2$ norm
+
+$$
+\norm{v}_{2, h} = \sqrt{h \sum_j v_j^2}
+$$
+
+### Stability
+
+#### Solution operator
+
+Assume $E_k$ is the solution operator for a PDE, i.e. $\U^{n+1} = E_k \U^n$
+
+Then for a specific mesh point, we have
+
+$$
+U_j^{n+1} = (E_k \U^n)_j = \sum_p a_p U_{j-p}^n
+$$
+
+e.g. if our scheme is $$\partial_t U_j^n = \disclapl[x] U_j^n$$, i.e. $U_j^{n+1} = U_j^n + \frac{k}{h^2} (U_{j+1}^n - 2U_j^n + U_{j-1}^n)$, then
+
+$$
+\begin{align*}
+(E_k \U^n)_j &= a_{-1} U_{j+1}^n + a_0 U_j^n + a_1 U_{j-1}^n \\
+&= \frac{k}{h^2} U_{j+1}^n + \parens{1 - \frac{2k}{h}} U_j^n + \frac{k}{h} U_{j-1}^n
+\end{align*}
+$$
+
+#### Symbol
+
+The symbol is the trigonometric polynomial associated with $E_k$:
+
+$$
+\tilde E(\xi) = \sum_p a_p e^{-ip \xi}
+$$
+
+For the scheme above, the symbol is
+
+$$
+\tilde E(\xi) = \frac{k}{h^2} e^{i\xi} + \parens{1 - \frac{2k}{h}} + \frac{k}{h} e^{-i\xi}
+$$
+
+A scheme is stable with respect to the max norm if $\abs{\tilde E(\xi)} \leq 1$ for all $\xi \in \R$.
+
+
 ## Weak formulations of PDEs
 
 Finding a solution $u \in C^n(\Omega)$ for $$\L(u) = f$$ from might not be feasible in practice because our $f$ could be less smooth or discontinuous. It may also help us to consider non-smooth solutions as we search for a discrete solution. So we weaken our PDE $\L(u) = f$ to finding a solution $u \in V$ such that for every $v \in V$, we satisfy
