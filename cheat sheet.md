@@ -62,6 +62,7 @@ $$
 $$
 
 Runge-Kutta 2: (not sure how this deals with $t$)
+
 $$
 \begin{align*}
 \boldsymbol \xi &= \y_n + \Delta t \f(\y_n) \\
@@ -75,15 +76,15 @@ $$
 
 error when substituting the exact solution into the discretization
 
-e.g. if PDE is $-\Delta u + f = 0$, then discretization might be $-\disclapl U_j^n + f_j^n = 0$ so truncation error would be
+e.g. if PDE is $-\Delta u = f$, then discretization might be $-\disclapl U_j = f_j$ so truncation error would be
 
 $$
-\tau_j^n = -\disclapl u_j^n + f_j^n
+\tau_j = \disclapl u_j + f_j
 $$
 
 #### Consistency
 
-a method is consistent if $h \to 0$ implies $\abs{\tau_j} \to 0$
+a method is consistent if $h \to 0$ implies $\abs{\tau_j} \to 0$​
 
 #### Convergence
 
@@ -93,13 +94,21 @@ $$
 h \to 0 \text{ implies } \abs{U - u} \to 0
 $$
 
+proof usually involves analysis of new function $z = U - u$
+
 #### Stability
 
 a method is stable if it does not blow up, i.e. if the magnitude of the solution is bounded
 
-if the method does not change in time, stability involves bounding $\abs U$ in general
+if the method does not change in time, stability involves bounding $\abs U$​ in general
 
-if the method does change in time, we want to know whether $\norm{U^{n+1}} \leq \norm{U^n} \leq \norm{U^0}$
+e.g. 1D elliptic poisson equation finite difference solution bound is
+
+$$
+\norm{\U}_{\infty, h} \leq \max\curlies{\abs{U_0}, \abs{U_M}} + Ch^2 \max_{x_j \in \Omega} \abs{\disclapl U_j}
+$$
+
+if the method does change in time, we want to know whether $\norm{U^{n+1}} \leq \norm{U^n} \leq \norm{U^0}$. this can often be done by relating $U_j^{n+1}$ and $\U^n$, and then finding bounds by considering the maximum points.
 
 ## Finite difference methods
 
@@ -178,7 +187,7 @@ $$
 \tilde E(\xi) = \frac{k}{h^2} e^{i\xi} + \parens{1 - \frac{2k}{h}} + \frac{k}{h} e^{-i\xi}
 $$
 
-A scheme is stable with respect to the max norm and the $\ell_2$ norm if $\abs{\tilde E(\xi)} \leq 1$ for all $\xi \in \R$.
+A scheme is stable with respect to $\ell_2$ norm if $\abs{\tilde E(\xi)} \leq 1$ for all $\xi \in \R$. If a scheme is stable with respect to the max norm then it will have $\abs{\tilde E(\xi)} \leq 1$, but this is not sufficient.
 
 
 ## Weak formulations of PDEs
@@ -191,7 +200,14 @@ $$
 
 where $V$ is a broader function space, e.g. $W_p^k(\Omega)$. If we integrate the LHS by parts, we can get something that may not require the same order derivatives
 
-Can come up with bilinear form $a(u, v)$ and linear functional $F(v)$ so that our problem reduces to finding $u$ so that $a(u, v) = F(v)$. If $a$ is coercive and continuous/bounded, $F$ is bounded, and $V$ is a subspace of a Hilbert space, then we can apply the Lax-Milgram theorem to conclude that there is a unique solution to the problem. If $a$ is also symmetric then it defines an inner product, so by the Riesz representation theorem every linear functional corresponds to an inner product with one specific element so this is another route to a unique solution.
+Can come up with bilinear form $a(u, v)$ and linear functional $F(v)$ so that our problem reduces to finding $u$ so that $a(u, v) = F(v)$. If $a$ is coercive and continuous/bounded, $F$ is bounded, and $V$ is a subspace of a Hilbert space, then we can apply the Lax-Milgram theorem to conclude that there is a unique solution to the problem. If $a$​ is also symmetric then it defines an inner product, so by the Riesz representation theorem every linear functional corresponds to an inner product with one specific element so this is another route to a unique solution.
+
+$$
+\begin{align*}
+a \text{ is bounded/continuous} &\longleftrightarrow a(u, v) \leq c\norm{u}\norm{v} \\
+a \text{ is coercive} &\longleftrightarrow a(u, u) \geq \alpha \norm{u}^2
+\end{align*}
+$$
 
 ### Inner products, norms, function spaces
 
@@ -200,17 +216,30 @@ Inner products:
 $$
 \begin{align*}
 \angles{f, g}_{L^2(\Omega)} &= \int_\Omega f g \\
-\angles{f, g}_{W^k_p(\Omega)} &= \begin{cases} \displaystyle \parens{\sum_{\abs \alpha \leq k} \norm{D^\alpha f}^p_{L^p}}^{1/p} & 1 \leq p < \infty \\ \displaystyle \max_{\abs{\alpha} \leq k} \norm{D^\alpha f}_{L^\infty(\Omega)} & p = \infty \end{cases} \\
-\text{e.g. } \angles{f, g}_{W^k_2(\Omega)} &= \sum_{\abs \alpha < k} \angles{D^\alpha f, D^\alpha g}_{L^2(\Omega)}
+\angles{f, g}_{W^k_2(\Omega)} &= \sum_{\abs \alpha < k} \angles{D^\alpha f, D^\alpha g}_{L^2(\Omega)}
 \end{align*}
 $$
 
-Each inner product $\angles{x, y}$ has an associated norm $\norm{x} = \sqrt{\angles{x, x}}$
+Each inner product $\angles{x, y}$ has an associated norm $\norm{x} = \sqrt{\angles{x, x}}$​
 
-- $L^2(\Omega) = \curlies{f : \Omega \to \R \ |\ \norm{f}_{L^2(\Omega)} < \infty}$​
+Sobolev norm is
+
+$$
+\norm{f}_{W^k_p(\Omega)} &= \begin{cases} \displaystyle \parens{\sum_{\abs \alpha \leq k} \norm{D^\alpha f}^p_{L^p(\Omega)}}^{1/p} & 1 \leq p < \infty \\ \displaystyle \max_{\abs{\alpha} \leq k} \norm{D^\alpha f}_{L^\infty(\Omega)} & p = \infty \end{cases}
+$$
+
+Sobolev seminorm is
+
+$$
+\abs{f}_{W^k_p(\Omega)} &= \begin{cases} \displaystyle \parens{\sum_{\abs \alpha = k} \norm{D^\alpha f}^p_{L^p(\Omega)}}^{1/p} & 1 \leq p < \infty \\ \displaystyle \max_{\abs \alpha = k} \norm{D^\alpha f}_{L^\infty(\Omega)} & p = \infty \end{cases}
+$$
+
+Difference is $\abs \alpha \leq k$ (norm) vs $\abs \alpha = k$
+
+- $L^2(\Omega) = \curlies{f : \Omega \to \R \ \vert\ \norm{f}_{L^2(\Omega)} < \infty}$​
   - $L^2$ inner product is $\displaystyle \angles{f, g}_{L^2(\Omega)} = \int_\Omega fg$
-- $\displaystyle W^k_p(\Omega) = \curlies{f \in L^1_\text{loc}(\Omega)\ \bigg|\ \norm{f}_{W^k_p(\Omega)} < \infty}$
-- $\mathring W_p^k = \curlies{f \in W^k_p(\Omega)\  \big|\ D_w^\alpha f|_{\partial \omega} = 0 \text{ in } L^2(\partial \Omega) \text{ for } \abs{\alpha} < k}$
+- $\displaystyle W^k_p(\Omega) = \curlies{f \in L^1_\text{loc}(\Omega)\ \bigg\vert\ \norm{f}_{W^k_p(\Omega)} < \infty}$
+- $\mathring W_p^k = \curlies{f \in W^k_p(\Omega)\  \big\vert\ D_w^\alpha f|_{\partial \omega} = 0 \text{ in } L^2(\partial \Omega) \text{ for } \abs{\alpha} < k}$
 - $H^k(\Omega) = W^k_2(\Omega)$ (since $L^2$ is special)
 
 #### Sobolev's inequality
@@ -237,4 +266,30 @@ $$
 \norm{L}_{B'} = \sup_{0 \neq v \in B} \frac{L(v)}{\norm v_B}
 $$
 
-$B'$ is the set of bounded linear functionals on $B$, i.e. $B' = \curlies{L : B \to \R \text{ linear}\  |\ \norm{L}_{B'} < \infty}$
+$B'$ is the set of bounded linear functionals on $B$, i.e. $B' = \curlies{L : B \to \R \text{ linear}\  \vert \ \norm{L}_{B'} < \infty}$
+
+### Céa's theorem
+
+The error between the finite element method solution $u_h \in V_h$ and the actual solution $u$ can be bounded in the non-discretized function space $V$
+
+$$
+\norm{u - u_h}_V \leq \frac{c}{\alpha} \min_{v \in V_h} \norm{u - v_h}_V
+$$
+
+where $c$ is the continuity constant and $\alpha$ is the coercivity constant
+
+### Friedrich's inequality
+
+Mean of a function $f$ is $\overline f = \displaystyle \frac{1}{\abs{\Omega}} \int_\Omega f$
+
+Friedrich's inequality says
+
+$$
+\norm{u - \overline u}_{W^1_p} \leq c\abs{u}_{W^1_p}
+$$
+
+### Finding weak formulations
+
+If $\partial \Omega = \Gamma_D \sqcup \Gamma_N$ where $\Gamma_D$ has Dirichlet boundary conditions and $\Gamma_N$ has Neumann boundary conditions, then need $v \in V$ to have $v(x) = 0$ for $x \in \Gamma_D$
+
+If $\partial \Omega = \Gamma_N$, then we don't need boundary constant, so problem is underconstrained as solutions that differ by a constant are equally valid, so we constrain problem to require that $v \in V$ has $\overline v = 0$

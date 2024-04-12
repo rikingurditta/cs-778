@@ -189,3 +189,11 @@ F(U) &= \begin{pmatrix} hu \\ hu^2 + \frac{1}{2}gh^2 \end{pmatrix} \\
 &= \begin{pmatrix} y \\ \frac{y^2}{h} + \frac{1}{2}gh^2 \end{pmatrix}
 \end{align*}
 $$
+
+
+
+$$
+\text{PDE is } -\Delta u + f = 0 \\
+\tau = \disclapl u + f \\
+\text{why not } \tau = -\disclapl u + f \text{ ? }
+$$

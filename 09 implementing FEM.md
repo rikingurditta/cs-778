@@ -68,7 +68,7 @@ $$
 Thus, our weak formulation becomes to find $w \in V$ so that
 
 $$
-\int_0^1 \kappa(x) \dbyd{w}{x}(x) \dbyd{v}{x}(x) \d x = \int_0^1 f(x) v(x) \d x - \int_0^1 \kappa(x) \dbyd{G}{x}(x)\dbyd{v}{x} \d x
+\int_0^1 \kappa(x) \dbyd{w}{x}(x) \dbyd{v}{x}(x) \d x = \int_0^1 f(x) v(x) \d x - \int_0^1 \kappa(x) \dbyd{G}{x}(x)\dbyd{v}{x} \d x - v(1) \beta
 $$
 
 ## FEM
@@ -319,8 +319,9 @@ A_{ij}^{(k)} &= \int_{k_k} \kappa \dbyd{\psi_{k,j}}{x}\dbyd{\psi_{k,i}}{x} \d x 
 \end{align*}
 $$
 
-$$
+
 To actually compute these integrals over $[0, 1]$, we must use quadrature to approximate
+
 $$
 \int_0^1 g(\xi) \d \xi \approx \sum_{i=1}^n \frac12 b_i g\parens{\frac12 c_i + \frac12}
 $$
